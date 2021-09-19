@@ -1,0 +1,81 @@
+/*  */
+.card .body {
+    font-size: 14px;
+    padding: 20px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0.55rem;
+    background: #fff;
+    color: #616161;
+    font-weight: 400;
+    transition: all 0.2s ease-in-out;
+}
+.card .body:hover {
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+.card .body.bg-dark {
+    background: #313740 !important;
+    color: #bdbdbd !important;
+}
+.card .body.bg-dark .table td,
+.card .body.bg-dark .table th {
+    border-top: 1px solid #4c4c4c;
+    color: #bdbdbd;
+}
+.l-green {
+    background: linear-gradient(45deg, #9ce89d, #cdfa7e) !important;
+}
+.l-pink {
+    background: linear-gradient(45deg, pink, #fbc1cb) !important;
+}
+.l-turquoise,
+.total_earnings .chart div {
+    background: linear-gradient(45deg, #00ced1, #08e5e8) !important;
+    color: #fff !important;
+}
+.l-cyan {
+    background: linear-gradient(45deg, #49cdd0, #00bcd4) !important;
+    color: #fff !important;
+}
+.l-khaki {
+    background: linear-gradient(45deg, khaki, #fdf181) !important;
+}
+.l-coral {
+    background: linear-gradient(45deg, #f08080, #f58787) !important;
+    color: #fff !important;
+}
+.l-salmon {
+    background: linear-gradient(45deg, #ec74a1, #fbc7c0) !important;
+    color: #fff !important;
+}
+.l-blue {
+    background: linear-gradient(45deg, #72c2ff, #86f0ff) !important;
+    color: #fff !important;
+}
+.l-seagreen {
+    background: linear-gradient(45deg, #8ed8ec, #85f7b5) !important;
+    color: #fff !important;
+}
+.l-amber,
+.w_calender span + span,
+.w_calender em {
+    background: linear-gradient(45deg, #fda582, #f7cf68) !important;
+    color: #fff !important;
+}
+.l-blush {
+    background: linear-gradient(45deg, #dd5e89, #f7bb97) !important;
+    color: #fff !important;
+}
+.l-parpl,
+.total_earnings .chart.expense div {
+    background: linear-gradient(45deg, #a890d3, #edbae7) !important;
+    color: #fff !important;
+}
+.l-slategray {
+    background: linear-gradient(45deg, #708090, #7c8ea0) !important;
+    color: #fff !important;
+}
+.l-dark {
+    background: linear-gradient(45deg, #555, #333) !important;
+    color: #fff !important;
+}
