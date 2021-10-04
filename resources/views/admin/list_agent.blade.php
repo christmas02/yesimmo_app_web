@@ -1,5 +1,18 @@
   @extends('admin/layout/master')
 
+<?php 
+
+function appartement($id){
+
+  $data = App\Appartement::where('user_id',$id)->get();
+  return $data;
+
+}
+
+
+
+?>
+
 @section('content') 
 <!-- page content -->
 <div class="right_col" role="main">
@@ -63,10 +76,8 @@
 
                                     <td>
                                         <div class="">
-                                            <a href="" class="btn btn-primary btn-rounded"><i class="fa fa-folder"></i> Voir</a>
-                                            <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            Supprimer
-                                            </button>
+                                            <a href="/detail/agent/{{ $items->id}}" class="btn btn-primary btn-rounded"><i class="fa fa-eye"></i> {{ count(appartement($items->id)) }}</a>
+                                            <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-trash"></i></button>
                                         </div> 
                                     </td>
                                 </tr>

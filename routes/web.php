@@ -32,6 +32,8 @@ Route::post('/save/revervation/appartement','TemplateController@reserveApparteme
 
 Route::get('/connexion','TemplateController@connexion');
 
+Route::get('/password','TemplateController@password');
+
 Route::get('/compte/user', 'TemplateController@compteUser');
 
 Route::get('/appartements', 'TemplateController@Appartement');
@@ -79,6 +81,8 @@ Route::group(['middleware' => 'admin'], function()
     Route::post('/save/agent','AdminContrller@saveAgent');
 
     Route::get('/liste/reservation','AdminContrller@getReservation');
+
+    Route::get('/detail/agent/{id}','AdminContrller@showAgent');
 
 
 ////////////==========================================================///////////////////

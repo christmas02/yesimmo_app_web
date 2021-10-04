@@ -547,4 +547,15 @@ class AdminContrller extends Controller
         }
 
     }
+
+    public function showAgent($id){
+
+        $infoUser = User::where('id',$id)->first();
+        $listlistAppart = Appartement::where('user_id',$id)->get();
+
+        //dd($infoUser);
+
+        return view('admin.detail_agent', compact('infoUser','listlistAppart'));
+
+    }
 }
