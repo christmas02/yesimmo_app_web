@@ -551,14 +551,14 @@
 
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre
-                            de pierce <span class="required">*</span>
+                            de pièce <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
                             <select required="required" name="nbre_pierce" class="form-control ">
-                                <option value="3"> 1 perce</option>
-                                <option value="3"> 2 perce</option>
-                                <option value="3"> 3 perce</option>
-                                <option value="4"> 3 perce</option>
+                                <option value="1"> 1 pièce</option>
+                                <option value="2"> 2 pièce</option>
+                                <option value="3"> 3 pièce</option>
+                                <option value="4"> 4 pièce</option>
                             </select>
                         </div>
                     </div>
@@ -569,10 +569,10 @@
                         </label>
                         <div class="col-md-6 col-sm-6 ">
                             <select required="required" name="nbre_lit" class="form-control ">
-                                <option value="3"> 1 lit</option>
-                                <option value="3"> 2 lits</option>
+                                <option value="1"> 1 lit</option>
+                                <option value="2"> 2 lits</option>
                                 <option value="3"> 3 lits</option>
-                                <option value="4"> 3 lits</option>
+                                <option value="4"> 4 lits</option>
                             </select>
                         </div>
                     </div>
@@ -583,8 +583,8 @@
                         </label>
                         <div class="col-md-6 col-sm-6 ">
                             <select required="required" name="nbre_salle_eau" class="form-control ">
-                                <option value="3"> 1 salle d'eau</option>
-                                <option value="3"> 2 salles d'eau</option>
+                                <option value="1"> 1 salle d'eau</option>
+                                <option value="2"> 2 salles d'eau</option>
                                 <option value="3"> 3 salles d'eau</option>
                                 <option value="4"> 4 salles d'eau</option>
                             </select>

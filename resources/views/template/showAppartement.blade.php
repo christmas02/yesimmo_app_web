@@ -1,4 +1,4 @@
-@extends('template.layout.master_page_one')
+@extends('template.layout.master_second')
 
 @section('content')
 <style>
@@ -60,498 +60,291 @@ label{
 }
 </style>
 <!-- SINGLE DETAIL -->
-<section class="single__Detail" style="padding: 2px;">
-        <div class="container">
-        @if(Session::has('success'))
-			<div class="alert alert-success">{{ Session::get('success') }}</div>
-		@elseif(Session::has('danger'))
-			<div class="alert alert-danger">{{ Session::get('danger') }}</div>
-		@elseif(Session::has('warning'))
-			<div class="alert alert-warning">{{ Session::get('warning') }}</div>
-		@endif
-            <div class="row">
-               <div class="col-md-8 col-lg-8">
-                    <div class="single__detail-title mt-4">
-                        <h3 class="text-capitalize">{{$residences->titre}}</h3>
-                        <p> {{$residences->localisations}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding: 0px; margin-bottom:15px; border-radius:100px;">
-                <div class="col-lg-6" style="padding: 0px;">
-                    <div class="slider__image__detail-large-one">
-                        <img src="{{asset('immobilier/public/storage/'.$residences->image_one)}}" alt="" width="570" height="380" class="w-100 img-transition">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        @if($galerie)
-                        @foreach($galerie as $items)
-                        <div class="items-box col-lg-6">
-                            <div class="slider__image__detail-large-one">
-                                <img src="{{asset('immobilier/public/storage/'.$items->image)}}" alt="yesimmo" width="275" height="184" class="w-100 img-transition">
-                            </div>
-                        </div>
-                        @endforeach
-                        @endif
-                    </div>
-                </div>
-            </div>
+<main id="main" class="site-main single single-02">
+	<div class="place">
+		<div class="slick-sliders">
+			<div class="slick-slider" data-item="1" data-arrows="true" data-itemscroll="1" data-dots="true" data-infinite="true" data-centermode="true" data-centerpadding="418px" data-tabletitem="1" data-tabletscroll="1" data-tabletpadding="70px" data-mobileitem="1" data-mobilescroll="1" data-mobilepadding="30px">
+			<div class="place-slider__item bd"><a title="Place Slider Image" href="#"><img src="{{asset('/immobilier/public/storage/'.$residences->image_one)}}" alt="slider-01"></a></div>
+			@if($galerie)
+			@foreach($galerie as $items)
+			<div class="place-slider__item bd"><a title="Place Slider Image" href="#"><img src="{{asset('/immobilier/public/storage/'.$items->image)}}" alt="slider-01"></a></div>
+			@endforeach
+			@endif
+		</div><!-- .page-title -->
+		<div class="place-share">
+				<a title="Save" href="#" class="add-wishlist">							
+					<i class="la la-bookmark large"></i>
+				</a>
+				<a title="Share" href="#" class="share">									
+					<i class="la la-share-square la-24"></i>
+				</a>
+				<div class="social-share"><div class="list-social-icon"> 
+					<a class="facebook" onclick="window.open('https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwp.getgolo.com%2Fplace%2Fthe-louvre%2F','sharer', 'toolbar=0,status=0');" href="javascript:void(0)"> <i class="fab fa-facebook-f"></i> </a> 
+					<a class="twitter" onclick="popUp=window.open('https://twitter.com/share?url=https%3A%2F%2Fwp.getgolo.com%2Fplace%2Fthe-louvre%2F','sharer','scrollbars=yes');popUp.focus();return false;" href="javascript:void(0)"> <i class="fab fa-twitter"></i> </a>  
+					<a class="linkedin" onclick="popUp=window.open('http://linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwp.getgolo.com%2Fplace%2Fthe-louvre%2F&amp;title=The+Louvre','sharer','scrollbars=yes');popUp.focus();return false;" href="javascript:void(0)"> <i class="fab fa-linkedin-in"></i> </a> 
+					<a class="pinterest" onclick="popUp=window.open('http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwp.getgolo.com%2Fplace%2Fthe-louvre%2F&amp;description=The+Louvre&amp;media=https://wp.getgolo.com/wp-content/uploads/2019/10/ef3cc68f-2e02-41cc-aad6-4b301a655555.jpg','sharer','scrollbars=yes,width=800,height=400');popUp.focus();return false;" href="javascript:void(0)"> <i class="fab fa-pinterest-p"></i> </a></div></div>
+			</div><!-- .place-share -->
+			<div class="place-slider__nav slick-nav">
+			<div class="place-slider__prev slick-nav__prev">
+				<i class="las la-angle-left"></i>
+			</div><!-- .place-slider__prev -->
+			<div class="place-slider__next slick-nav__next">		
+				<i class="las la-angle-right"></i>
+			</div><!-- .place-slider__next -->
+		</div><!-- .place-slider__nav -->
+		</div><!-- .place-slider -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="place__left">
+						
+						<div class="place__box place__box--npd">
+							<h1>{{$residences->titre}}</h1>
+							<div class="place__meta">
+								@if($residences->type == 1)
+									<div class="place__currency">{{ number_format($residences->montant) }} .XOF / Jours</div>
+								@elseif($residences->type == 2)
+									<div class="place__currency">{{ number_format($residences->montant) }} .XOF / Mois</div>
+								@endif
+								- 
+								<div class="place__category">
+									
+									<div class="address">
+								<i class="la la-map-marker"></i>
+								{{$residences->localisations}}
+								<a href="#" title="Direction"></a>
+							</div>
+								</div>
 
-            <div class="row">
-                <div class="col-md-8 col-lg-8">
-                    <div class="single__detail-title mt-4">
-                        <h3 class="text-capitalize"> {{$residences->nom_residence}} </h3>
-                        <p> {{$residences->localisations}}</p>
-                    </div>
-                </div>
-                        <div class="col-md-4 col-lg-4">
-                            <div class="single__detail-price mt-4">
-                            @if($residences->type == 1)
-                                <h3 class="text-capitalize text-gray">{{ number_format($residences->montant) }} .XOF / Jours</h3>
-                            @elseif($residences->type == 2)
-                            <h3 class="text-capitalize text-gray">{{ number_format($residences->montant) }} .XOF / Mois</h3>
-                            @endif
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="badge badge-primary p-2 rounded"><i
-                                                class="fa fa-print"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="badge badge-primary p-2 rounded"><i
-                                                class="fa fa-exchange"></i></a>
-                                    </li>
+							</div><!-- .place__meta -->
+						</div><!-- .place__box -->
+						
+						<div class="place__box place__box-overview">
+							<h3>Descriptiion</h3>
+							<div class="">{{$residences->description}} .</div><!-- .place__desc -->
+						</div>
 
-                                    <li class="list-inline-item">
-                                        <a href="#" class="badge badge-primary p-2 rounded"><i
-                                                class="fa fa-heart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+						{{--<div class="place__box">
+							<h3>Contact Info</h3>
+							<ul class="place__contact">
+								<li>									
+									<i class="la la-phone"></i>
+									<a title="00 343 7859" href="tel:003437859">00 343 7859</a>
+								</li>
+								<li>											
+									<i class="la la-globe"></i>
+									<a title="www.abcsite.com" href="www.abcsite.html">www.abcsite.com</a>
+								</li>
+								<li>											
+									<i class="la la-facebook-f"></i>
+									<a title="fb.com/abc" href="fb.com/abc.html">facebook.com/getgolo</a>
+								</li>
+								<li>											
+									<i class="la la-instagram"></i>
+									<a title="instagram.com/abc" href="instagram.com/abc.html">instagram.com/getgolo</a>
+								</li>
+							</ul>
+						</div><!-- .place__box -->--}}
+						
+						
+					</div><!-- .place__left -->
+				</div>
 
-                        </div>
-            </div>
-        
-            {{--<div class="row"> 
-                <div class="col-md-12">
-                    <!-- SLIDER IMAGE DETAIL -->
-                    <div class="slider__image__detail-large owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="slider__image__detail-large-one">
-                                    <img src="{{asset('/image/'.$residences->image_one)}}" alt="" class="img-fluid w-100 img-transition">
-                                    <div class="description">
-                                        <figure>
-                                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                                        </figure>
-                                        <span class="badge badge-primary text-capitalize mb-2">Appartement meublé</span>
-                                        <div class="price">
-                                            <h5 class="text-capitalize">{{ number_format($residences->montant) }} .XOF / Jours</h5>
+				<div class="col-lg-4">
+					<div class="sidebar sidebar--shop sidebar--border">
+					@if($residences->type == 1)
+						<div class="widget-reservation-mini">
+							<h3>Programmer une visite</h3>
+							<a href="#" class="open-wg btn">Request</a>
+						</div>
+						<aside class="widget widget-shadow widget-reservation">
+							<h3>Réservation cette appartement</h3>
+							<form action="/save/revervation/appartement" method="POST" class="form-underline" onsubmit="$('#loading').show(),$('#submit').hide();">
+							@csrf
+								<div class="field-select has-sub field-guest">
+									<span class="sl-icon"><i class="la la-user"></i></span>
+									<input type="text" name="name" placeholder="Nom prenom" value="{{ old('name') }}" required>
+									<input type="text" name="idApp" hidden  value="{{$residences->id}}">
+									@error('name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+								</div>
+								<div class="field-select has-sub field-guest">
+									<span class="sl-icon"><i class="la la-at"></i></span>
+									<input type="text" name="email" placeholder="Adresse electronique" value="{{ old('email') }}" required>
+									@error('email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+								</div>
+								<div class="field-select has-sub field-guest">
+									<span class="sl-icon"><i class="la la-phone"></i></span>
+									<input type="number" name="phone" placeholder="Nunero de telephone" value="{{ old('phone') }}" maxlength="10" size="10" required>
+									@error('phone')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+								</div>
+								<div class="field-select field-date">
+									<span class="sl-icon"><i class="la la-calendar-alt"></i></span>
+									<input type="date" name="datedebut" id="datedebut" placeholder="Date debut de sejour" value="{{ old('datedebut') }}" required class="">
+									@error('datedebut')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+								</div>
+
+								<div class="field-select field-date">
+									<span class="sl-icon"><i class="la la-calendar-alt"></i></span>
+									<input type="date" id="datefin" name="datefin" placeholder="Date fin de sejour" value="{{ old('datefin') }}" required class="">
+									@error('datefin')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
+									<input value="{{ $residences->montant }}" id="jour" hidden/>
+									<input type="text" id="CoutSejour" name="CoutSejour" value="" hidden>
+									<input type="text" id="NbreJour" name="NbreJour" value="" hidden>
+									<input type="text" name="type" value="1" hidden>
+								</div>
+								<div class="col-md-12">
+									<div class="box_reservation" style="text-align: left"></div>
+								</div>
+								<br>
+								<!--<input class="btn" id="btn" type="submit" name="submit" value="Reserver">
+								<div id="loading">
+									<i class="loading-icon fa-lg fas fa-spinner fa-spin hide"></i> 
+									<i class="czi-user mr-2 ml-n1"></i>
+								</div>-->
+								<div class="field-submit">
+										<input id="submit" type="submit" value="Rerserve l'appartement" class="btn">
+                                        <div class="btn" id="loading" style="display:none">
+                                            <i class="loading-icon fa-lg fas fa-spinner fa-spin hide"></i> 
+                                            <i class="czi-user mr-2 ml-n1"></i>
                                         </div>
-                                        <h4 class="text-capitalize">{{$residences->titre}}</h4>
+								</div>
+								
+								<p class="note"></p>
+							</form>
 
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="slider__image__detail-large-one">
-                                    <img src="{{asset('/image/'.$residences->image_two)}}" alt="" class="img-fluid w-100 img-transition">
-                                    <div class="description">
-                                        <figure>
-                                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                                        </figure>
-                                        <span class="badge badge-primary text-capitalize mb-2">Appartement meublé</span>
-                                        <div class="price">
-                                            <h5 class="text-capitalize">{{ number_format($residences->montant) }} .XOF / Jours</h5>
+							
+						</aside><!-- .widget-reservation -->
+					@elseif($residences->type == 2)
+						<div class="widget-reservation-mini">
+							<h3>Programmer une visite</h3>
+							<a href="#" class="open-wg btn">Request</a>
+						</div>
+						<aside class="widget widget-shadow widget-reservation">
+							<h3>Programmer une visite</h3>
+							<form action="/save/revervation/appartement" method="POST" class="form-underline" onsubmit="$('#loading').show(),$('#submit').hide();">
+							@csrf
+								<div class="field-select has-sub field-guest">
+									<span class="sl-icon"><i class="la la-user"></i></span>
+									<input type="text" name="name" placeholder="Nom prenom" value="{{ old('name') }}" required>
+									<input type="text" name="idApp" hidden class="form-control" value="{{$residences->id}}" required="required">
+                        			<input type="text" name="type" value="2" hidden>
+									@error('name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+								</div>
+								<div class="field-select has-sub field-guest">
+									<span class="sl-icon"><i class="la la-at"></i></span>
+									<input type="text" name="email" placeholder="Adresse electronique" value="{{ old('email') }}" required>
+									@error('email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+								</div>
+								<div class="field-select has-sub field-guest">
+									<span class="sl-icon"><i class="la la-phone"></i></span>
+									<input type="text" name="phone" placeholder="Nunero de telephone" value="{{ old('phone') }}" required>
+									@error('phone')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+								</div>
+								<div class="field-select field-date">
+									<span class="sl-icon"><i class="la la-calendar-alt"></i></span>
+									<input type="date" name="datedebut" placeholder="Date de la visite" value="{{ old('datedebut') }}" required class="">
+									@error('datedebut')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+								</div>
+							
+								<!--<input class="btn" id="btn" type="submit" value="">
+								<div id="loading">
+									<i class="loading-icon fa-lg fas fa-spinner fa-spin hide"></i> 
+									<i class="czi-user mr-2 ml-n1"></i>
+								</div>-->
+								<div class="field-submit">
+										<input id="submit" type="submit" value="Rerserve la visite"" class="btn">
+                                        <div class="btn" id="loading" style="display:none">
+                                            <i class="loading-icon fa-lg fas fa-spinner fa-spin hide"></i> 
+                                            <i class="czi-user mr-2 ml-n1"></i>
                                         </div>
-                                        <h4 class="text-capitalize">{{$residences->titre}}</h4>
+								</div>
 
-                                    </div>
+								<p class="note"></p>
+							</form>
+						</aside><!-- .widget-reservation -->
 
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="slider__image__detail-large-one">
-                                    <img src="{{asset('/image/'.$residences->image_three)}}" alt="" class="img-fluid w-100 img-transition">
-                                    <div class="description">
-                                        <figure>
-                                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                                        </figure>
-                                        <span class="badge badge-primary text-capitalize mb-2">Appartement meublé</span>
-                                        <div class="price">
-                                            <h5 class="text-capitalize">{{ number_format($residences->montant) }} .XOF / Jours</h5>
-                                        </div>
-                                        <h4 class="text-capitalize">{{$residences->titre}}</h4>
+					@endif
+					</div><!-- .sidebar -->
+				</div>
+			</div>
+		</div>
+	</div><!-- .place -->
 
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="item">
-                                <div class="slider__image__detail-large-one">
-                                    <img src="{{asset('/image/'.$residences->image_for)}}" alt="" class="img-fluid w-100 img-transition">
-                                    <div class="description">
-                                        <figure>
-                                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                                        </figure>
-                                        <span class="badge badge-primary text-capitalize mb-2">Appartement meublé</span>
-                                        <div class="price">
-                                            <h5 class="text-capitalize">{{ number_format($residences->montant) }} .XOF / Jours</h5>
-                                        </div>
-                                        <h4 class="text-capitalize">{{$residences->titre}}</h4>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="slider__image__detail-large-one">
-                                    <img src="{{asset('/image/'.$residences->image_five)}}" alt="" class="img-fluid w-100 img-transition">
-                                    <div class="description">
-                                        <figure>
-                                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                                        </figure>
-                                        <span class="badge badge-primary text-capitalize mb-2">Appartement meublé</span>
-                                        <div class="price">
-                                            <h5 class="text-capitalize">{{ number_format($residences->montant) }} .XOF / Jours</h5>
-                                        </div>
-                                        <h4 class="text-capitalize">{{$residences->titre}}</h4>
-
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-
-                    <div class="slider__image__detail-thumb owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="slider__image__detail-thumb-one">
-                                <img src="{{asset('/image/'.$residences->image_one)}}" alt="" class="img-fluid w-100 img-transition">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="slider__image__detail-thumb-one">
-                                <img src="{{asset('/image/'.$residences->image_two)}}" alt="" class="img-fluid w-100 img-transition">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="slider__image__detail-thumb-one">
-                                <img src="{{asset('/image/'.$residences->image_three)}}" alt="" class="img-fluid w-100 img-transition">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="slider__image__detail-thumb-one">
-                                <img src="{{asset('/image/'.$residences->image_for)}}" alt="" class="img-fluid w-100 img-transition">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="slider__image__detail-thumb-one">
-                                <img src="{{asset('/image/'.$residences->image_five)}}" alt="" class="img-fluid w-100 img-transition">
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- END SLIDER IMAGE DETAIL -->
-                </div>
-                <!-- END SLIDER IMAGE DETAIL -->
-                
-            </div> 
-
-            <div class="row">
-                <div class="col-md-8 col-lg-8">
-                    <div class="single__detail-title mt-4">
-                        <h3 class="text-capitalize">{{$residences->titre}}</h3>
-                        <p> {{$residences->localisations}}</p>
-                    </div>
-                </div>
-                        <div class="col-md-4 col-lg-4">
-                            <div class="single__detail-price mt-4">
-                                <h3 class="text-capitalize text-gray">{{ number_format($residences->montant) }} .XOF / Jours</h3>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="badge badge-primary p-2 rounded"><i
-                                                class="fa fa-print"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="badge badge-primary p-2 rounded"><i
-                                                class="fa fa-exchange"></i></a>
-                                    </li>
-
-                                    <li class="list-inline-item">
-                                        <a href="#" class="badge badge-primary p-2 rounded"><i
-                                                class="fa fa-heart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-            </div>--}}
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- DESCRIPTION -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="single__detail-desc">
-                                <h6 class="text-capitalize detail-heading">description</h6>
-                                <div class="">
-                                    <p>{{$residences->description }}</p>
-
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-
-                           
-                         
-                           
-                            <!-- END FLOR PLAN -->
-                            <div class="single__detail-features">
-                                <h6 class="text-capitalize detail-heading">Visite guidé</h6>
-                                <div class="single__detail-features-video">
-                                    <!--<figure class=" mb-0">
-                                        <div class="home__video-area text-center">
-                                            <img src="images/1920x1080.jpg" alt="" class="img-fluid">
-                                            <a href="https://youtu.be/dQtLx6dsbcI" class="play-video-1 ">
-                                                <i class="icon fa fa-play text-white"></i>
+	<!-- .similar-places -->
+	<div class="similar-places">
+		<div class="container">
+			<h2 class="similar-places__title title">Autres appartements</h2>
+			<div class="similar-places__content">
+				<div class="row">
+					@if($allresidence)
+					@foreach($allresidence as $items)
+					<div class="col-lg-3 col-md-6">
+					<div class="place-item layout-02 place-hover margin_box" data-maps_name="mattone_restaurant">
+                            <div class="place-inner">
+                                        <div class="place-thumb hover-img">
+                                            <a class="entry-thumb" href="/description/appartement/location/{{$items->id}}/{{$items->type}}/accueil">
+                                                <img src="{{asset('/immobilier/public/storage/'.$items->image_one)}}" alt=""></a>
+                                            <a href="/description/appartement/location/{{$items->id}}/{{$items->type}}/accueil" class="golo-add-to-wishlist btn-add-to-wishlist " data-place-id="185">
+                                                <span class="icon-heart">
+                                                    <i class="la la-bookmark large"></i>
+                                                </span>                                    
+                                            </a>       
+											@if($items->type == 1)
+                                            <a class="entry-category rosy-pink" href="#">
+                                                <i class="las la-bed"></i><span>Résidences meublées</span>
                                             </a>
+											@elseif($items->type == 2)
+											<a class="entry-category blue" href="#">
+                                                <i class="las la-home"></i><span>Appartement à louer</span>
+                                            </a>
+											@endif
+                                            <a href="#" class="author" title="Author"><img src="template/images/favicon-yesimmo.png" alt="Author"></a>
+                                        </div>       
+                                        <div class="entry-detail">
+                                            <h3 class="place-title"><a href="/description/appartement/location/{{$items->id}}/{{$items->type}}/accueil">{{$items->titre}}</a></h3>
+                                            <div class="open-now"> <i class="las la-map-marker"></i> {{$items->localisations}}</div>
+                                            <div class="entry-bottom">
+                                                <div class="place-price">
+                                                    <span>{{ number_format($items->montant) }} .XOF / Jours</span>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                    </figure>-->
-                                </div>
                             </div>
-
-                            <!-- LOCATION -->
-                            <div class="single__detail-features">
-                                <!-- FILTER VERTICAL -->
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    
-                                    
-
-
-                                </ul>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-map-location" role="tabpanel"
-                                        aria-labelledby="pills-map-location-tab">
-                                       
-
-                                    </div>
-                                    <!--<div class="tab-pane fade" id="pills-street-view" role="tabpanel"
-                                        aria-labelledby="pills-street-view-tab">
-                                        <iframe class="h600 w100"
-                                            src="https://www.google.com/maps/embed?pb=!4v1553797194458!6m8!1m7!1sR4K_5Z2wRHTk9el8KLTh9Q!2m2!1d36.82551718071267!2d-76.34864590837246!3f305.15097!4f0!5f0.7820865974627469"
-                                            style="border:0;" allowfullscreen></iframe>
-                                    </div>-->
-
-
-                                </div>
-                                <!-- END FILTER VERTICAL -->
-                            </div>
-                            <!-- END LOCATION -->
-
-                            <!-- PROPERTY VIEWS -->
                         </div>
-                    </div>
-                    <!-- END DESCRIPTION -->
-                </div>
-                <div class="col-lg-4">
-                    <!-- FORM FILTER -->
-                    <div class="products__filter mb-30">
-                        <div class="products__filter__group">
-                        @if($residences->type == 1)
-                           <div class="products__filter__header">
-                                <h5 class="text-center text-capitalize">Programmer une visite</h5>
-                            </div>
-                            <div class="products__filter__footer">
-                                <div class="form-group mb-0">
-                                    <a href="" class="btn btn-primary text-capitalize btn-block" data-toggle="modal" data-target="#residence">
-                                    <i class="fa fa- ml-1"></i> Reservation </a>
-                                </div>
-                            </div>
-                        @elseif($residences->type == 2)
-                            <div class="products__filter__header">
-                                <h5 class="text-center text-capitalize">Programmer une visite</h5>
-                            </div>
-                            <div class="products__filter__footer">
-                                <div class="form-group mb-0">
-                                    <a href="" class="btn btn-primary text-capitalize btn-block" data-toggle="modal" data-target="#exampleModalCenter">
-                                    <i class="fa fa- ml-1"></i> Reservation </a>
-                                </div>
-                            </div>
+					</div>
+					@endforeach
+					@endif
 
-                        @endif
-                        </div>
-                    </div>
-                    <!-- END FORM FILTER -->
-                    
-                </div>
-            </div>
-
-            <!-- SIMILIAR PROPERTY -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="similiar__item">
-                        <h6 class="text-capitalize detail-heading">
-                        </h6>
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- END SIMILIAR PROPERTY -->
-        </div>
-</section>
-    <!-- END SINGLE DETAIL -->
+				</div>
+			</div>
+		</div>
+	</div><!-- .similar-places -->
 
 
-    <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header" >
-        <h5 class="" id="exampleModalLongTitle">Réservation d'une visite</h5>
-   
-      </div>
-      <form method="POST" action="/save/revervation/appartement" id="form">
-      <div class="modal-body">
-        
-        <br>
-        <div class="row">
-            <div class="col-lg-7">
-                @csrf
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Nom et prénom</label>
-                        <input type="text" name="name" class="form-control" required="required">
-                        <input type="text" name="idApp" hidden class="form-control" value="{{$residences->id}}" required="required">
-                        <input type="text" name="type" value="2" hidden>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Numéro de téléphone</label>
-                        <input type="text" name="phone" class="form-control" required="required">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Adresse e-mail</label>
-                        <input type="text" name="email" class="form-control" required="required">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Date de rendez-vous</label>
-                        <input type="date" name="datedebut" class="form-control" required="required">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5">
-            <div class="row">
-                <div class="col-md-12" style="margin-bottom: 20px;"><img src="{{asset('immobilier/public/storage/'.$residences->image_one)}}" alt="" class="img-fluid w-100 img-transition"></div><br>
-                <div class="col-md-12"><h5>{{$residences->titre}}</h5><h5 class="text-capitalize text-gray">Loyer : {{ number_format($residences->montant) }} .XOF / Mois</h5><span>NB: vous devez prevois des frais de viste, 
-                        (5.000 FR ...) Ce montant vous donne droit à 3 visite d'appartement</span></div>
-                
-                </div>
-
-            </div>
-        
-            
-        
-            
-        </div>
-      </div>
-      <div class="modal-footer-btn">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="submit"  class="btn btn-primary">Reserver</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="residence" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header" >
-        <h5 class="" id="exampleModalLongTitle">Réservation cette appartement</h5>
-   
-      </div>
-      <form method="POST" action="/save/revervation/appartement" id="form">
-      <div class="modal-body">
-        
-        <br>
-        <div class="row">
-            <div class="col-lg-7">
-                @csrf
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Nom et prénom</label>
-                        <input type="text" name="name" class="form-control" required="required">
-                        <input type="text" name="idApp" hidden class="form-control" value="{{$residences->id}}" required="required">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Numéro de téléphone</label>
-                        <input type="text" name="phone" class="form-control" required="required">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Adresse e-mail</label>
-                        <input type="text" name="email" class="form-control" required="required">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Debut de sejours</label>
-                            <input type="date" name="datedebut" id="datedebut" class="form-control" required="required">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Fin de sejours</label>
-                            <input type="date" name="datefin" id="datefin" class="datefin form-control" required="required">
-                            <input value="{{ $residences->montant }}" id="jour" hidden/>
-                            <input type="text" name="CoutSejour" id="CoutSejour" value="" hidden>
-                            <input type="text" name="NbreJour" id="NbreJour" value="" hidden>
-                            <input type="text" name="type" value="1" hidden>
-                        </div>
-                    </div>
-                    <div id="alertsup">La date de fin doit etre apres la date de début !</div>
-                    <div id="alertegal">La date de début et fin sont identique</div>
-                    <div class="col-md-12">
-                        <span id="nbreJour"></span> <br>
-                        <span id="logement"></span> <br>
-                        <hr>
-                        <span id="coutSejour"></span>
-                        
-                    </div>
+</main><!-- .site-main -->
+<!-- END SINGLE DETAIL -->
 
 
-                </div>
-                
-            </div>
-            <div class="col-lg-5">
-            <div class="row">
-                <div class="col-md-12" style="margin-bottom: 20px;"><img src="{{asset('immobilier/public/storage/'.$residences->image_one)}}" alt="" class="img-fluid w-100 img-transition"></div><br>
-                <div class="col-md-12"><h5>{{$residences->titre}}</h5><h5 class="text-capitalize text-gray">Loyer : {{ number_format($residences->montant) }} .XOF / Jour</h5><span></span></div>
-                </div>
 
-            </div>
-        
-            
-        
-            
-        </div>
-      </div>
-      <div class="modal-footer-btn">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="submit"  class="btn btn-primary">Reserver</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
 
 <script>
     $(document).on('submit', '[id^=form]', function (e) {
@@ -570,6 +363,8 @@ label{
     return false;
     });
 </script>
+
+
 
 
 

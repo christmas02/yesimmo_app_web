@@ -1,416 +1,351 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
+<!-- Mirrored from golohtml.uxper.co/demo/home-cityguide.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Sep 2021 13:50:44 GMT -->
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> </title>
+    <meta name="robots" content="index, follow" />
     <meta name="description" content="L’agence immobilière repensée pour mieux vous accompagner">
-    <meta name="keywords" content="immobilier - vente - appartement - location - meuble - résidence"/>
+    <meta name="keywords" content="immobilier - vente - appartement - location - meuble - résidence" />
     <meta name="author" content="alexis djidonou - impactafric.com">
     <title>Agence immobilier - digital </title>
 
     <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:description" content="" />
+    <meta property="og:title" content="L’agence immobilière repensée pour mieux vous accompagnez" />
+    <meta property="og:image" content="https://yesimmo.ci/template/images/logo-blue.png" />
+    <meta property="og:url" content="http://yesimmo.ci/" />
+    <meta property="og:type" content="siteweb" />
+    <meta property="og:locale" content="" />
+    <meta property="og:videos" content="" />
+    <meta property="og:site_name" content="yesimmo Agence immobilier - digital" />
+    <meta property="og:description"
+        content="Residences meublée et appartement en location, immobilier - vente - appartement - location - meuble - résidence" />
     <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
+    <meta name="twitter:image" content="https://yesimmo.ci/template/images/logo-blue.png" />
     <meta name="twitter:url" content="" />
     <meta name="twitter:card" content="" />
 
-    <link rel="manifest" href="yesimmo.cin">
-    <!-- favicon.ico in the root directory -->
+    <!-- favicons -->
     <link rel="icon" type="image/png" href="{{asset('/template/images/favicon-yesimmo.png')}}" />
-    <link href="template/css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+    <link rel="manifest" href="yesimmo.ci">
 
+    <!-- Font Awesome -->
+    <link href="{{asset('/admin/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/fonts/jost/stylesheet.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/line-awesome/css/line-awesome.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/fontawesome-pro/css/fontawesome.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/bootstrap/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/slick/slick-theme.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/slick/slick.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/quilljs/css/quill.bubble.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/quilljs/css/quill.core.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/quilljs/css/quill.snow.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/chosen/chosen.min.css')}}" />
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('/template/libs/datetimepicker/jquery.datetimepicker.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/libs/venobox/venobox.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/css/style.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/template/css/responsive.css')}}" />
+    <!-- jQuery -->
+    <script src="{{asset('/template/js/jquery-1.12.4.js')}}"></script>
+    <script src="{{asset('/template/libs/popper/popper.js')}}"></script>
+    <script src="{{asset('/template/libs/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('/template/libs/slick/slick.min.js')}}"></script>
+    <script src="{{asset('/template/libs/slick/jquery.zoom.min.js')}}"></script>
+    <script src="{{asset('/template/libs/isotope/isotope.pkgd.min.js')}}"></script>
+    <script src="{{asset('/template/libs/quilljs/js/quill.core.js')}}"></script>
+    <script src="{{asset('/template/libs/quilljs/js/quill.js')}}"></script>
+    <script src="{{asset('/template/libs/chosen/chosen.jquery.min.js')}}"></script>
+    <script src="{{asset('/template/libs/datetimepicker/jquery.datetimepicker.full.min.js')}}"></script>
+    <script src="{{asset('/template/libs/venobox/venobox.min.js')}}"></script>
+    <script src="{{asset('/template/libs/waypoints/jquery.waypoints.min.js')}}"></script>
+    <!-- orther script -->
+    <script src="{{asset('/template/js/main.js')}}"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-211999079-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-211999079-1');
+    </script>
 </head>
 
 <body>
-    <!-- HEADER -->
-    <header class="jumbotron bg-theme">
-        <div class="bg-overlay"></div>
-        <!-- NAVBAR -->
-        @include('template.layout.navigation')
-        <!-- END NAVBAR -->
-        <!-- HERO -->
-      <div class="wrap__intro d-flex align-items-md-center ">
-            <div class="container">
-                <div class="row align-items-center justify-content-start flex-wrap">
-                    <div class="col-md-10 mx-auto">
-                        <div class="wrap__intro-heading text-center" data-aos="fade-up">
-                            <!-- <h4>the walls property</h4> -->
-                            <h1>Trouvez votre maison de rêve</h1>
-                            <p></p>
-
-                            <!-- SEARCH BAR -->
-                            <div class="wrapper__section">
-                                <div class="wrapper__section__components">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <!-- <h3 class="section_heading mt-4">Form Search with Categories</h3> -->
-                                            <form action="/recherche/appartement" method="POST">
-                                            @csrf
-                                                <div class=" search__container">
-                                                    <div class="row input-group no-gutters">
-                                                        <div class="col-sm-12 col-md-5">
-                                                            <input type="text" name="localisation" class="form-control" aria-label="Text input"
-                                                                placeholder="Situation géographique">
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-4 input-group">
-
-                                                            <select class="select_option form-control" name="categorie" id="categories">
-                                                                <option value="tous" selected>Catégorie</option>
-                                                                @foreach($alltype as $items)
-                                                                    <option value="{{ $items->id }}">{{ $items->name }}</option>
-                                                                @endforeach
-
-                                                            </select>
-
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-3 input-group-append">
-                                                            <button class="btn btn-primary btn-block" type="submit">
-                                                                <i class="fa fa-search"></i> <span
-                                                                    class="ml-1">Recherche</span>
-                                                            </button>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END HERO -->
-    </header>
-    <!-- END HEADER -->
-  
-    @yield('content') 
-
-    <!-- ABOUT 
-    <section class="home__about bg-theme-v4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="title__leading">
-                        <!-- <h6 class="text-uppercase">trusted By thousands</h6> 
-                        <h2 class="text-capitalize"> why choose use?</h2>
-                        <p>
-                            The first step in selling your property is to get a valuation from local experts. They will
-                            inspect your home and take into account its unique features, the area and market conditions
-                            before providing you with the most accurate valuation.
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero amet, laborum qui nulla
-                            quae alias tempora. Placeat voluptatem eum numquam quas distinctio obcaecati quaerat,
-                            repudiandae qui! Quia, omnis, doloribus! Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Quod libero amet, laborum qui nullas tempora.</p>
-
-                        <a href="#" class="btn btn-primary mt-3 text-capitalize"> read more
-                            <i class="fa fa-angle-right ml-3 "></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
-
-    <!-- OUR PARTNERS 
-    <section class="projects__partner bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="title__head">
-                        <h2 class="text-center text-capitalize">our partners</h2>
-                        <p class="text-center text-capitalize">brand partners successful projects trusted many clients
-                            real estate </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="projects__partner-logo">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <img src="images/partner-logo6.png" alt="" class="img-fluid">
-                            </li>
-                            <li class="list-inline-item">
-                                <img src="images/partner-logo7.png" alt="" class="img-fluid">
-                            </li>
-                            <li class="list-inline-item">
-                                <img src="images/partner-logo8.png" alt="" class="img-fluid">
-                            </li>
-                            <li class="list-inline-item">
-                                <img src="images/partner-logo1.png" alt="" class="img-fluid">
-                            </li>
-                            <li class="list-inline-item">
-                                <img src="images/partner-logo5.png" alt="" class="img-fluid">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END OUR PARTNERS -->
-
-    <!-- TESTIMONIAL 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-lg-6 mx-auto">
-                    <div class="title__head">
-                        <h2 class="text-center text-capitalize">
-                            what people says
-                        </h2>
-                        <p class="text-center text-capitalize">people says about walls property.</p>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="testimonial owl-carousel owl-theme">
-                <!-- TESTIMONIAL 
-                <div class="item testimonial__block">
-                    <div class="testimonial__block-card bg-reviews">
-                        <p>
-                            Thank you walls property help me, choice dream home We were impressed with the build
-                            quality, Plus they are competitively priced.
-                        </p>
-                    </div>
-                    <div class="testimonial__block-users">
-                        <div class="testimonial__block-users-img">
-                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="testimonial__block-users-name">
-                            jhon doe <br>
-                            <span>owner, digital agency</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- END TESTIMONIAL 
-                <!-- TESTIMONIAL 
-                <div class="item testimonial__block">
-                    <div class="testimonial__block-card bg-reviews">
-                        <p>
-                            Thank you walls property help me, choice dream home We were impressed with the build
-                            quality, Plus they are competitively priced.
-                        </p>
-                    </div>
-                    <div class="testimonial__block-users">
-                        <div class="testimonial__block-users-img">
-                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="testimonial__block-users-name">
-                            jhon doe <br>
-                            <span>owner, digital agency</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- END TESTIMONIAL 
-                <!-- TESTIMONIAL 
-                <div class="item testimonial__block">
-                    <div class="testimonial__block-card bg-reviews">
-                        <p>
-                            Thank you walls property help me, choice dream home We were impressed with the build
-                            quality, Plus they are competitively priced.
-                        </p>
-                    </div>
-                    <div class="testimonial__block-users">
-                        <div class="testimonial__block-users-img">
-                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="testimonial__block-users-name">
-                            jhon doe <br>
-                            <span>owner, digital agency</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- END TESTIMONIAL 
-                <!-- TESTIMONIAL 
-                <div class="item testimonial__block">
-                    <div class="testimonial__block-card bg-reviews">
-                        <p>
-                            Thank you walls property help me, choice dream home We were impressed with the build
-                            quality, Plus they are competitively priced.
-                        </p>
-                    </div>
-                    <div class="testimonial__block-users">
-                        <div class="testimonial__block-users-img">
-                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="testimonial__block-users-name">
-                            jhon doe <br>
-                            <span>owner, digital agency</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- END TESTIMONIAL -->
-                <!-- TESTIMONIAL 
-                <div class="item testimonial__block">
-                    <div class="testimonial__block-card bg-reviews">
-                        <p>
-                            Thank you walls property help me, choice dream home We were impressed with the build
-                            quality, Plus they are competitively priced.
-                        </p>
-                    </div>
-                    <div class="testimonial__block-users">
-                        <div class="testimonial__block-users-img">
-                            <img src="images/80x80.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="testimonial__block-users-name">
-                            jhon doe <br>
-                            <span>owner, digital agency</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- END TESTIMONIAL 
-
-            </div>
-        </div>
-    </section>
-    <!-- END TESTIMONIAL -->
-
-    
-
-
-
-
-
-
-
-    <!-- Footer  -->
-    <footer>
-        <div class="wrapper__footer bg-theme-footer">
-            <div class="container">
+    <div id="wrapper">
+        <header id="header" class="site-header">
+            <div class="container-fluid">
                 <div class="row">
-                    <!-- ADDRESS -->
-                    <div class="col-md-3">
-                        <div class="widget__footer">
-                           <h4 class="footer-title">Contacts</h4>
-                           <!-- <figure>
-                                <img src="template/images/logo-blue.png" alt="" class="logo-footer">
-                            </figure>
-                            <p>
-                            L’agence immobilière repensée pour mieux vous accompagner
+                    <div class="col-xl-4 col-5">
+                        <div class="site">
+                            <div class="site__menu">
+                                <a title="Menu Icon" href="#" class="site__menu__icon">
+                                    <i class="las la-bars la-24-black"></i>
+                                </a>
+                                <div class="popup-background"></div>
+                                <div class="popup popup--left">
+                                    <a title="Close" href="#" class="popup__close">
+                                        <i class="las la-times la-24-black"></i>
+                                    </a><!-- .popup__close -->
 
-                            </p>-->
+                                    <div class="popup__content">
+                                        <div class="popup__user popup__box open-form">
+                                            <a title="Login" href="#" class="open-login">Connexion</a>
+                                        </div><!-- .popup__user -->
 
-                            <ul class="list-unstyled mb-0 mt-3">
-                                <li> <b> <i class="fa fa-map-marker"></i></b><span>Cocody, Abidjan Cote d'ivoire</span> </li>
-                                <li> <b><i class="fa fa-phone-square"></i></b><span>+225 05 65 12 10 84</span> </li>
-                                <li> <b><i class="fa fa-headphones"></i></b><span>support@immo.com</span> </li>
-                            </ul>
-                        </div>
+                                        <div class="popup__menu popup__box">
+                                            <ul class="menu-arrow">
+                                                <li>
+                                                    <a href="/">Accueil</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/residences">Residences meublees</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/appartements">Appartements</a>
+                                                </li>
 
-                    </div>
-                    <!-- END ADDRESS -->
+                                            </ul>
+                                        </div><!-- .popup__menu -->
+                                    </div><!-- .popup__content -->
 
-                    <!-- QUICK LINKS -->
-                    <div class="col-md-6">
-                        <div class="widget__footer">
-                            <h4 class="footer-title">Catégorie</h4>
-                            <div class="link__category-two-column">
-                                <ul class="list-unstyled ">
-                                    <li class="list-inline-item">
-                                        <a href="#">Résidences meublées</a>
+                                    <div class="popup__button popup__box">
+                                        <a title="Add place" href="" class="btn">
+                                            <i class="las la-phone-volume"></i>
+                                            <span>+225 074899</span>
+                                        </a>
+                                    </div><!-- .popup__button -->
+
+                                </div><!-- .popup -->
+                            </div><!-- .site__menu -->
+
+                            <div class="site__brand">
+                                <a title="Logo" href="/" class="site__brand__logo"><img
+                                        src="{{asset('/template/images/assets/logo.png')}}" width="150"
+                                        alt="yesimmo"></a>
+                            </div><!-- .site__brand -->
+
+                        </div><!-- .site -->
+                    </div><!-- .col-md-6 -->
+
+                    <div class="col-xl-8 col-12">
+                        <div class="right-header align-right">
+                            <nav class="main-menu">
+                                <ul>
+                                    <li>
+                                        <a href="/">Accueil</a>
                                     </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Appartements à louer</a>
+                                    <li>
+                                        <a href="/residences">Residences meublees</a>
                                     </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Espaces de détente</a>
+                                    <li>
+                                        <a href="/appartements">Appartements</a>
                                     </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Vente</a>
-                                    </li>
-                                    
-                                    
                                 </ul>
+                            </nav>
+
+                            @guest
+                            <div class="right-header__login">
+                                <a title="" class="" href="/connexion">Connexion</a>
+                            </div><!-- .right-header__login -->
+
+                            @else
+                            <div class="">
+                                <a title="" class="" href="/espace/agent">Mon compte</a>
+                            </div><!-- .right-header__login -->
+
+                            @endguest
+
+                            <div class="popup popup-form">
+                                <a title="Close" href="#" class="popup__close">
+                                    <i class="las la-times la-24-black"></i>
+                                </a><!-- .popup__close -->
+                                <ul class="choose-form">
+                                    <li class="nav-signup"><a title="Sign Up" href="#signup">Connexion</a></li>
+                                </ul>
+                            </div><!-- .popup-form -->
+
+                            <div class="right-header__button btn">
+                                <a title="Add place" href="">
+                                    <i class="las la-phone-volume"></i>
+                                    <span>+225 0700780244</span>
+                                </a>
+                            </div><!-- .right-header__button -->
+                        </div><!-- .right-header -->
+                    </div><!-- .col-md-6 -->
+                </div><!-- .row -->
+            </div><!-- .container-fluid -->
+        </header><!-- .site-header -->
+
+
+        @yield('content')
+
+
+
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="footer__top">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="footer__top__info">
+                                <a title="Logo" href="" class="footer__top__info__logo"><img
+                                        src="{{asset('/template/images/assets/logo.png')}}" alt="Golo"></a>
+                                <p class="footer__top__info__desc">L’agence immobilière repensée pour mieux vous
+                                    accompagner</p>
+
                             </div>
                         </div>
-                    </div>
-                    <!-- END QUICK LINKS -->
-
-
-                    <!-- NEWSLETTERS -->
-                    <div class="col-md-3">
-                        <div class="widget__footer">
-                            <h4 class="footer-title">Suivez-nous</h4>
-                            <p class="mb-2">
-                            Suivez-nous et restez en contact pour recevoir les dernières nouvelles
-                            </p>
-                            <p>
-                                <a href="https://web.facebook.com/yesimmobilie" class="btn btn-social btn-social-o facebook mr-1">
-                                    <i class="fa fa-facebook-f"></i>
-                                </a>
-                                
-                                <button class="btn btn-social btn-social-o instagram mr-1">
-                                    <i class="fa fa-instagram"></i>
-                                </button>
-
-                                <button class="btn btn-social btn-social-o youtube mr-1">
-                                    <i class="fa fa-youtube"></i>
-                                </button>
-                            </p>
-                            <br>
-
+                        <div class="col-lg-2">
+                            <aside class="footer__top__nav">
+                                <h3>L'entreprise</h3>
+                                <ul>
+                                    <li><a title="About Us" href="">Apropos de nous</a></li>
+                                    <li><a title="Blog" href="">Blog</a></li>
+                                    <li><a title="Faqs" href="">Faqs</a></li>
+                                    <li><a title="Contact" href="">Contact</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                        <div class="col-lg-2">
+                            <aside class="footer__top__nav">
+                                <h3>Support</h3>
+                                <ul>
+                                    <li><a title="Get in Touch" href="#">Condition d'utilisation</a></li>
+                                    <li><a title="Help Center" href="#">Centre d'aide</a></li>
+                                    <li><a title="How it works" href="#">Comment ça fonctionne</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                        <div class="col-lg-3">
+                            <aside class="footer__top__nav footer__top__nav--contact">
+                                <h3>Contact</h3>
+                                <p>Email: <a href="" class="__cf_email__" data-cfemail="">contact@yesimmo.ci</a></p>
+                                <p>Phone: +225 0700780244</p>
+                                <ul>
+                                    <li class="facebook">
+                                        <a title="Facebook" href="https://web.facebook.com/yesimmobilie">
+                                            <i class="la la-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="youtube">
+                                        <a title="Youtube" href="#">
+                                            <i class="la la-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li class="instagram">
+                                        <a title="Instagram" href="#">
+                                            <i class="la la-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </aside>
                         </div>
                     </div>
-                    <!-- END NEWSLETTER -->
+                </div><!-- .top-footer -->
+                <div class="footer__bottom">
+                    <p class="footer__bottom__copyright">2020 &copy; <a title="Uxper Team" href="#">uxper.co</a>. All
+                        rights reserved.</p>
+                </div><!-- .top-footer -->
+            </div><!-- .container -->
+        </footer><!-- site-footer -->
+    </div><!-- #wrapper -->
+
+
+    <!-- large modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true"
+        style="border-radius: 40px;">
+        <div class="modal-dialog modal-lg modal-confirm">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <i class="fas fa-check-circle fa-7x animated rotateIn mb-4" style="color:green"></i>
+                    <h1 class="heading">Operation effectuer avec success !</h1>
+                    <br>
+                    <h4>{{ Session::get('success') }}</h4>
+                    <br><br>
                 </div>
             </div>
+            <!--/.Content-->
         </div>
+    </div>
 
-        <!-- Footer Bottom -->
-        <div class="bg__footer-bottom-v1">
-            <div class="container">
-                <div class="row flex-column-reverse flex-md-row">
-                    <div class="col-md-6">
-                        <span>
-                            © 2020 
-                            <a href="#"></a>
-                        </span>
-                    </div>
-
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true"
+        style="border-radius: 40px;">
+        <div class="modal-dialog modal-lg modal-confirm">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <i class="fas fa-close-circle fa-7x animated rotateIn mb-4" style="color:red"></i>
+                    <h1 class="heading"> </h1>
+                    <br>
+                    <h4>{{ Session::get('error') }}</h4>
+                    <br><br>
                 </div>
             </div>
+            <!--/.Content-->
         </div>
-        <!-- End Footer  -->
-    </footer>
+    </div>
 
 
-    <!-- SCROLL TO TOP -->
-    <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
-    <!-- END SCROLL TO TOP -->
-    <script src="template/js/index.bundle.js?fd365619e86ad9137a29"></script>
+    <script data-cfasync="false"
+        src="https://golohtml.uxper.co/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 
-    @if (config('sweetalert.alwaysLoadJS') === true && config('sweetalert.neverLoadJS') === false )
-    <script src="{{ $cdn ?? asset('vendor/sweetalert/sweetalert.all.js')  }}"></script>
-@endif
-@if (Session::has('alert.config'))
-    @if(config('sweetalert.animation.enable'))
-        <link rel="stylesheet" href="{{ config('sweetalert.animatecss') }}">
+
+    @if(Session::has('success'))
+        <script>
+        $(document).ready(function() {
+            $('#successModal').modal('show');
+            setTimeout(function() {
+                $('#successModal').modal('hide');
+            }, 5000);
+        });
+        </script>
+    @elseif(Session::has('error'))
+        <script>
+        $(document).ready(function() {
+            $('#successModal').modal('show');
+            setTimeout(function() {
+                $('#successModal').modal('hide');
+            }, 5000);
+        });
+        </script>
     @endif
-    @if (config('sweetalert.alwaysLoadJS') === false && config('sweetalert.neverLoadJS') === false)
-        <script src="{{ $cdn ?? asset('vendor/sweetalert/sweetalert.all.js')  }}"></script>
-    @endif
+
     <script>
-        Swal.fire({!! Session::pull('alert.config') !!});
+    $(document).ready(function() {
+        $("#loading").hide();
+        $("#btn").click(function(event) {
+            //Your actions here
+            $("#loading").show();
+            $("#btn").hide();
+        });
+    });
     </script>
-@endif
+
+
 
 </body>
+
+<!-- Mirrored from golohtml.uxper.co/demo/home-cityguide.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Sep 2021 13:52:08 GMT -->
 
 </html>

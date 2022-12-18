@@ -45,12 +45,12 @@
 
                         <div class="col-md-7 col-sm-7 ">
                             <div class="product-image container-image">
-                                <img src="{{asset('/public//storage/'.$appartement->image_one)}}" alt="..." />
+                                <img src="{{asset('immobilier/public//storage/'.$appartement->image_one)}}" alt="..." />
                             </div>
                             <div class="product_gallery">
                                 @foreach($galerie as $items)
                                 <a class="container-image">
-                                    <img src="{{asset('/public/storage/'.$items->image)}}" alt="..." width="" height="">
+                                    <img src="{{asset('immobilier/public/storage/'.$items->image)}}" alt="..." width="" height="">
                                   
                                 </a>
                                 @endforeach

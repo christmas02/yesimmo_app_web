@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/connexion';
+    protected $redirectTo = '/';
 
 
 
@@ -42,7 +42,7 @@ class RegisterController extends Controller
         $user = User::where('id',$id)->where('confirmation_token', $token)->first();
         if($user){
             $user->update(['confirmation_token' => null]);
-            //$this->guard()->login($user);
+            $this->guard()->login($user);
             return redirect($this->redirectPath())->with('success','votre compte a bien été confirmé');
         }else{
             return redirect('/connexion')->with('error','Ce lien  ne semble plus valide');
@@ -72,9 +72,12 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        try {
+        
+            //code...
             //dd($request['role']);
-            $this->validator($request->all())->validate();
+           //$validator = $this->validator( $request->all() )->validate();
+           $inputValidate = $this->validator($request->all());
+           $inputValidate->validate();
 
             event(new Registered($user = $this->create($request->all())));
             $user->notify(new RegisteredUser());
@@ -91,16 +94,14 @@ class RegisterController extends Controller
                 //return response()->json(['statu'=>0, 'role' => $role]);
             }
 
-        } catch (\Throwable $th) {
-            //dd($th);
-            return redirect()->back()->with('danger', 'Error.'.$th);
-        }
+       
 
     }
 
+
     protected function validator(array $data)
     {
-        try {
+            //code...
             return Validator::make($data, [
                 'name' => ['required', 'string', 'max:255'],
                 'lastname' => ['required', 'string', 'max:255'],
@@ -109,13 +110,6 @@ class RegisterController extends Controller
                 'phone' => ['required'],
                 'role' => ['required'],
             ]);
-
-        } catch (\Throwable $th) {
-            //dd($th);
-            return redirect()->back()->with('danger', 'Error.'.$th);
-        }
-
-        //dd($data);
     }
 
     /**
@@ -126,19 +120,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        try {
         //dd($data);
             return User::create([
                 'name' => $data['name']." ".$data['lastname'],
                 'email' => $data['email'],
                 'phone' => $data['phone'],
                 'role' => $data['role'],
+                'img' => "pp-yesimmo.jpg",
                 'password' => Hash::make($data['password']),
                 'confirmation_token'=> str_replace('/','',bcrypt(str_random(16)))
             ]);
-        } catch (\Throwable $th) {
-            //dd($th);
-            return redirect()->back()->with('danger', 'Error.'.$th);
-        }
     }
 }

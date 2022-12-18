@@ -11,11 +11,12 @@ use App\Reservation;
 use App\Type;
 use App\Clic;
 use App\Galerie;
-use App\Mail\fotgetPassword;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\confirm_reservation;
 use App\Mail\alert_reservation;
+use Illuminate\Support\Facades\Validator;
+
 
 class TemplateController extends Controller
 {
@@ -41,6 +42,18 @@ class TemplateController extends Controller
     public function reserveAppartement(Request $request){
 
         //dd($request->all());
+
+        $validator = Validator::make($request->all(), [
+            'phone' => ['required','max:10'], 
+            'datedebut' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            //dd($validator);
+            return back()->withErrors($validator)->withInput();
+        }
 
         $name = $request->get('name');
         $idApp = $request->get('idApp');
@@ -116,7 +129,9 @@ class TemplateController extends Controller
         // Communication email alert reservation
         Mail::to($infoAgemt->email)->send(new alert_reservation($data));
 
-        return redirect()->route('acceuil')->withSuccessMessage('Votre reservation a bien ete enregistrer.');
+        //return redirect()->route('acceuil')->withSuccessMessage('');
+        return redirect('/')->with('success','Votre reservation a bien ete enregistrer.');
+
 
         
 
@@ -139,18 +154,22 @@ class TemplateController extends Controller
         //dd($ref->ref);
 
         $alltype = $this->alltype();
+        $allresidence = Appartement::where('statu',1)->get()->random(4);
+        //dd($allresidence);
         $residences = Appartement::where('id',$id)->first();
         $galerie = Galerie::where('id_appartement',$ref->ref)->get();
         //dd($residences);
-       return view('template.showAppartement', compact('residences','alltype','galerie'));
+       return view('template.showAppartement', compact('allresidence','residences','alltype','galerie'));
     }
 
     Public function inscription(){
-        return view('template.inscription');
+        $alltype = $this->alltype();
+        return view('template.inscription',compact('alltype'));
     }
 
     Public function connexion(){
-        return view('template.connexion');
+        $alltype = $this->alltype();
+        return view('template.connexion',compact('alltype'));
     }
 
     Public function password(){
@@ -194,49 +213,6 @@ class TemplateController extends Controller
          }
 
          
-
-    }
-
-    public function forgetPassword(Request $request){
-
-        try {
-
-            $email = $request->get('email');
-            $user_exist = User::where('email', $email)->first();
-
-            //dd($user_exist);
-
-            $user = User::whereId($user_exist->id)->first();
-            $password = time();
-
-            if ($user) {
-                $passwords = bcrypt($password);
-                $user->password = $passwords;
-                $user->save();
-
-                //dd($user);
-
-                $data = [
-                    "password" => $password,
-                    "name" => $user_exist->name,
-                ];
-
-                // communication mail pas defaut
-                Mail::to($user_exist->email)->send(new fotgetPassword($data));
-
-                return redirect('connexion')->with('success','Votre mot de passe a bien été reinitialisé.  Veuiller consultez votre boite mail');
-
-            } else {
-
-                return redirect('connexion')->with('danger','Une erreur est survenue durant le processus , veillez contacter notre service client');
-
-            }
-        } catch (\Throwable $th) {
-            //dd($th);
-            return redirect()->back()->with('danger', 'Error.' . $th);
-        }
-
-  
 
     }
 

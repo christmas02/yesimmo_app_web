@@ -16,13 +16,13 @@ class fotgetPassword extends Mailable
      *
      * @return void
      */
-    public $data;
+    public $user;
     
     
-    public function __construct($data)
+    public function __construct($user)
     {
         //
-        $this->data = $data;
+        $this->user = $user;
     }
 
     /**

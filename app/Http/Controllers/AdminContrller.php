@@ -15,6 +15,7 @@ use App\User;
 use App\Galerie;
 use App\Reservation;
 use Illuminate\Support\Facades\DB;
+use App\Mail\activeAppartement;
 
 class AdminContrller extends Controller
 {
@@ -438,10 +439,21 @@ class AdminContrller extends Controller
     public function activerResidence($id){
         //dd($request->all());
         try {
+            $agent = Appartement::where('id',$id)->first();
+            $user = User::where('id',$agent->user_id)->first();
+            //dd($agent->user_id);
             Appartement::where('id',$id)
             ->update([
                 'statu' => 1,
             ]);
+
+            $data = [
+                "name" => $user->name
+
+            ];
+            
+            Mail::to($user->email)->send(new activeAppartement($data));
+
             return redirect()->back()->with('success', 'Opération éffectué avec succès.');
         } catch (\Throwable $th) {
             //dd($th);
@@ -477,9 +489,25 @@ class AdminContrller extends Controller
 
     public function getReservation(){
         $listReservation = Reservation::leftjoin('appartements','appartements.id','=','reservations.id_appartement')
-        ->select('appartements.ref as reference','reservations.name as nomClient','reservations.phone as phoneClient',
-        'reservations.created_at','reservations.statu', 'reservations.id as idReservation', 'reservations.created_at as date')
+        ->leftjoin('users','users.id','=','appartements.user_id')
+        ->select('appartements.ref as reference',
+                 'appartements.titre as designation',
+                 'appartements.localisations',
+                 'appartements.image_one',
+                 'users.name as nomPropriere',
+                 'users.phone as phonePropriere',
+                 'reservations.name as nomClient',
+                 'reservations.phone as phoneClient',
+                 'reservations.datedebut',
+                 'reservations.datefin',
+                 'reservations.nbreJour',
+                 'reservations.coutSejour',
+                 'reservations.type',
+                 'reservations.statu',
+                 'reservations.id as idReservation',
+                 'reservations.created_at as date')
         ->get();
+        //dd($listReservation);
         return view('admin.list_reservation',compact('listReservation'));
     }
 

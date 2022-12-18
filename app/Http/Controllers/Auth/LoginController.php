@@ -50,7 +50,7 @@ class LoginController extends Controller
         if(auth()->attempt(array('email' => $inputVal['email'], 'password' => $inputVal['password']))){
             
             if(auth()->user()->confirmation_token != null){
-                    return redirect('connexion')->with('danger','Compte inactif, veiller contacter notre service client, au +225 05 65 12 10 84');
+                    return redirect('connexion')->with('error','Compte inactif, veiller contacter notre service client, au +225 05 65 12 10 84');
             }else{
                 if (auth()->user()->role == "superadmin") {
                     return redirect()->route('espace.superadmin');
@@ -63,7 +63,7 @@ class LoginController extends Controller
             }
             
         }else{
-            return redirect('connexion')->with('danger','Infromation invalide, veiller contacter notre service client, au +225 05 65 12 10 84');
+            return redirect('connexion')->with('error','Infromation invalide, veiller contacter notre service client, au +225 0 84');
         }     
     }
 

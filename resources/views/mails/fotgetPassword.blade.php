@@ -50,14 +50,21 @@
                                                         <tr>
                                                             <td align="left" valign="top"
                                                                 style="direction:ltr;padding:0 24px 0 24px">
+                                                                <h2>Bienvenus !</h2>
+                                                                <p>{{ $user->name }}.</p>
+                                                                <p> Vous avez demandé une réinitialisation de votre mot
+                                                                    de passe, veuillez cliquer ci-dessous pour le
+                                                                    modifier </p>
+                                                                <a class="btn"
+                                                                    href="{{url('nouveau_mot_de_passe/'.$user->id.'/'.$user->remember_token.'')}}">Nouveau
+                                                                    mot de passe</a>
+                                                                <p> 'Merci d\'utiliser notre plateforme'.</p>
+
+                                                                <p>L'équipe </p>
                                                                 <p style="margin:0;padding:0;color:#131313;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0.1px">
-
-                                                                Bonjour monsieur/ madame {{ $data['name']}} votre nouveau mot de passe est le suivant  {{ $data['password']}} <br><br>
-                                                                Merci de consulter votre espace prestataire sur le site sportevent.
-
                                                                 </p>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr>
                                                             <td style="font-size:0">
@@ -66,7 +73,7 @@
 
                                                             </td>
                                                         </tr>
-                                                        
+
                                                         <tr>
                                                             <td style="font-size:0">
 
@@ -79,7 +86,7 @@
                                                                 style="direction:ltr;padding:0 24px 0 24px">
                                                                 <p
                                                                     style="margin:0;padding:0;color:#131313;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0.1px">
-                                                                    <strong></strong> 
+                                                                    <strong></strong>
                                                                 </p>
                                                             </td>
                                                         </tr>
@@ -93,8 +100,10 @@
                                                         <tr>
                                                             <td align="left" valign="top"
                                                                 style="direction:ltr;padding:0 24px 0 24px">
-                                                                <p style="margin:0;padding:0;color:#131313;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0.1px">
-                                                                    <a href="http://yesimmo.ci/">www.yesimmobilier.ci</a>
+                                                                <p
+                                                                    style="margin:0;padding:0;color:#131313;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0.1px">
+                                                                    <a
+                                                                        href="http://yesimmo.ci/">www.yesimmobilier.ci</a>
                                                                 </p>
                                                             </td>
                                                         </tr>
@@ -134,7 +143,8 @@
                                                                 <p
                                                                     style="margin:0;padding:0;color:#606060;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:18px">
                                                                     Cette notification par e-mail relative au service
-                                                                    vous a été envoyée afin de confirmer le prise en main de votre demande
+                                                                    vous a été envoyée afin de confirmer le prise en
+                                                                    main de votre demande
                                                                 </p>
                                                             </td>
                                                         </tr>
@@ -148,8 +158,7 @@
                                                         <tr>
                                                             <td align="left" valign="top"
                                                                 style="padding:0 24px 0 24px;direction:ltr">
-                                                                <a href="#"
-                                                                    style="display:block;width:88px;height:20px"
+                                                                <a href="#" style="display:block;width:88px;height:20px"
                                                                     aria-hidden="true"><img title="" alt=""
                                                                         src="http://yesimmo.ci/immobilier/public/img/footer-email.png"
                                                                         height="auto" width="88"
@@ -168,7 +177,8 @@
                                                             <td align="left" valign="top"
                                                                 style="padding:0 24px 0 24px;direction:ltr;color:#606060;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:18px">
                                                                 © 2021 <a href="#"
-                                                                    style="color:#606060;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:18px;text-decoration:none"></a> </td>
+                                                                    style="color:#606060;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:18px;text-decoration:none"></a>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -192,7 +202,7 @@
                             <table width="480" role="presentation" cellpadding="0" cellspacing="0" border="0"
                                 align="center">
                                 <tbody>
-                                    
+
                                 </tbody>
                             </table>
                         </td>

@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title> | </title>
+    <title> | espace de gestion compte argent</title>
 
     <!-- Bootstrap -->
     <link href="{{asset('/admin/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -25,10 +25,8 @@
 
     <link href="{{asset('/admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}"
-        rel="stylesheet">
-    <link href="{{asset('/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}"
-        rel="stylesheet">
+    <link href="{{asset('/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
@@ -40,54 +38,53 @@
     <!-- Custom Theme Style -->
     <link href="{{asset('/css/style.css')}}" rel="stylesheet">
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
 
 </head>
 
 <style>
-.btn-modal {
-    background-color: #ccc;
-    color: gray;
-    border-radius: 50%;
-}
+    .btn-modal {
+        background-color: #ccc;
+        color: gray;
+        border-radius: 50%;
+    }
 
-.form-check-input {}
+    .form-check-input {}
 
-input:checked+.slider {
-    background-color: #2196F3;
-}
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
 
-label {
-    font-size: 18px;
-    text-align: center;
-}
+    label {
+        font-size: 18px;
+        text-align: center;
+    }
 
-.silde {
-    margin: 0 190px;
-}
+    .silde {
+        margin: 0 190px;
+    }
 
-.modal-title {
+    .modal-title {
 
-    color: #fff;
+        color: #fff;
 
-}
+    }
 
-.modal-header {
-    background-color: gray;
-    text-align: right !important;
-}
+    .modal-header {
+        background-color: gray;
+        text-align: right !important;
+    }
 
-.modal-footer-btn {
-    margin: 20px 38%;
+    .modal-footer-btn {
+        margin: 20px 38%;
 
-}
+    }
 
-.form-check-label {
-    margin-left: 5px;
-}
+    .form-check-label {
+        margin-left: 5px;
+    }
 </style>
 
 <body class="nav-md">
@@ -96,8 +93,7 @@ label {
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/" class="site_title"><img src="http://yesimmo.ci/template/images/logo-blue.png"
-                                width="100"><span></span></a>
+                        <a href="/" class="site_title"><img src="http://yesimmo.ci/template/images/logo-blue.png" width="100"><span></span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -106,8 +102,7 @@ label {
                     <div class="profile clearfix">
                         <div class="profile_pic">
                             @if(Auth::user()->img != NULL)
-                            <img src="{{asset('immobilier/public/storage/'.Auth::user()->img)}}" alt="..."
-                                class="img-circle profile_img">
+                            <img src="{{asset('immobilier/public/storage/'.Auth::user()->img)}}" alt="..." class="img-circle profile_img">
                             @else
                             <img src="{{asset('/admin/images/user.png')}}" alt="..." class="img-circle profile_img">
                             @endif
@@ -129,16 +124,14 @@ label {
                             <ul class="nav side-menu">
                                 <li><a href="/espace/agent"><i class="fa fa-home"></i> Tableau de bord</span></a></li>
 
-                                <li><a><i class="fa fa-edit"></i> Résidences meublées <span
-                                            class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-edit"></i> Résidences meublées <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/liste/residence">Liste des Residences</a></li>
                                         <li><a href="/poste/residence">Ajouter une residences</a></li>
                                     </ul>
                                 </li>
 
-                                <li><a><i class="fa fa-edit"></i> Appartements à louer <span
-                                            class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-edit"></i> Appartements à louer <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/agent/list/appartement">Liste des appartement</a></li>
                                         <li><a href="/agent/add/appartement">Ajouter un appartement</a></li>
@@ -170,8 +163,7 @@ label {
                     <nav class="nav navbar-nav">
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
-                                    id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                                     @if(Auth::user()->img != NULL)
                                     <img src="{{asset('immobilier/public/storage/'.Auth::user()->img)}}" id="profil" alt="...">
                                     {{ Auth::user()->name }}
@@ -180,29 +172,24 @@ label {
                                     @endif
 
                                 </a>
-                                <div class="dropdown-menu dropdown-usermenu pull-right"
-                                    aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                        data-target="#exampleModalProfile"> Modifier profile</a>
-                                    <a class="dropdown-item" data-toggle="modal"
-                                        data-target="#exampleModalmdp""> Modifier mot de passe</a>
-                                    <a class="dropdown-item" href="javascript:;">
+                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalProfile"> Modifier profile</a>
+                                    <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalmdp""> Modifier mot de passe</a>
+                                    <a class=" dropdown-item" href="javascript:;">
                                         <span>Parametre</span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                                         {{ __('Déconnexion') }}<i class="fa fa-sign-out pull-right"></i>
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
 
                             <li role="presentation" class="nav-item dropdown open">
-                                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1"
-                                    data-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-envelope-o"></i>
                                     <span class="badge bg-green"> - </span>
                                 </a>
@@ -228,8 +215,7 @@ label {
     </div>
 
     <!-- Modal  MODIFIER DU PROFILE UTILISATEUR-->
-    <div class="modal fade" id="exampleModalProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalProfile"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModalProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalProfile" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
 
@@ -244,8 +230,7 @@ label {
                         <div class="item form-group col-md-3">
                             <center class="img_profil">
                                 @if(Auth::user()->img != NULL)
-                                <img src="{{asset('immobilier/public/storage/'.Auth::user()->img)}}" alt="..."
-                                    class="img-circle profile_img" style="width:200; margin-left: 0px;">
+                                <img src="{{asset('immobilier/public/storage/'.Auth::user()->img)}}" alt="..." class="img-circle profile_img" style="width:200; margin-left: 0px;">
                                 @else
                                 <img src="{{asset('/admin/images/user.png')}}" alt="..." class="img-circle profile_img">
                                 @endif
@@ -278,51 +263,52 @@ label {
 
                 </div>
                 <div class="modal-footer-btn">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                  <button type="submit" class="btn btn-success">Valider</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-success">Valider</button>
                 </div>
                 </form>
             </div>
         </div>
     </div>
 
-     <!-- Modal  MODIFIER DU MOT DE PASSE-->
-     <div class="modal fade" id="exampleModalmdp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-              <form method="POST" action="" enctype="multipart/form-data">
-              @csrf
-              <center> <h4>Modification du mot de passe</h4> </center> <hr>
-                  <input type="text" hidden name="id" value="">
-                  <div class="item form-group">
-                      <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Mot de passe</label>
-                      <div class="col-md-6 col-sm-6 ">
-                          <input type="" name="" class="form-control" value="">
-                      </div>
-                      
-                  </div>
-                  <div class="item form-group">
-                      <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Confirmation mot de parse_str</label>
-                      <div class="col-md-6 col-sm-6 ">
-                          <input type="" name="" class="form-control" value="">
-                      </div>
-                  </div>
-          </div>
-          <div class="modal-footer-btn">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            <button type="submit" class="btn btn-success">Valider</button>
-          </div>
-          </form>
+    <!-- Modal  MODIFIER DU MOT DE PASSE-->
+    <div class="modal fade" id="exampleModalmdp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        @csrf
+                        <center>
+                            <h4>Modification du mot de passe</h4>
+                        </center>
+                        <hr>
+                        <input type="text" hidden name="id" value="">
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Mot de passe</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="" name="" class="form-control" value="">
+                            </div>
+
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Confirmation mot de parse_str</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="" name="" class="form-control" value="">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer-btn">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-success">Valider</button>
+                </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqqwfoyJERekoo-c243pZUj4azUHqvR_U&libraries=places&callback=initAutocomplete"
-        async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqqwfoyJERekoo-c243pZUj4azUHqvR_U&libraries=places&callback=initAutocomplete" async defer></script>
     <scrip src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></scrip>
 
 
@@ -381,25 +367,25 @@ label {
     <script src="{{asset('/admin/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js')}}"></script>
 
     <script type="text/javascript">
-    $(document).ready(function() {
+        $(document).ready(function() {
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(".clientContacter").hide();
+            $(".clientNonConatcter").hide();
+            $(".clientContacterDeux").hide();
+            $(".clientNonConatcterDeux").show();
+            // Equivalent event setup using the `.on()` method
         });
-
-        $(".clientContacter").hide();
-        $(".clientNonConatcter").hide();
-        $(".clientContacterDeux").hide();
-        $(".clientNonConatcterDeux").show();
-        // Equivalent event setup using the `.on()` method
-      });
 
         function ShowDiv() {
             $(".clientNonConatcter").hide();
             $(".clientContacter").show();
-           
+
         }
 
         function HideDiv() {
@@ -441,154 +427,180 @@ label {
         $("#file").change(function() {
             readURL(this);
         });
-
-
-
     </script>
 
     <script>
         // File Upload
-// 
-function ekUpload(){
-  function Init() {
+        // 
+        function ekUpload() {
+            function Init() {
 
-    console.log("Upload Initialised");
+                console.log("Upload Initialised");
 
-    var fileSelect    = document.getElementById('file-upload'),
-        fileDrag      = document.getElementById('file-drag'),
-        submitButton  = document.getElementById('submit-button');
+                var fileSelect = document.getElementById('file-upload'),
+                    fileDrag = document.getElementById('file-drag'),
+                    submitButton = document.getElementById('submit-button');
 
-    fileSelect.addEventListener('change', fileSelectHandler, false);
+                fileSelect.addEventListener('change', fileSelectHandler, false);
 
-    // Is XHR2 available?
-    var xhr = new XMLHttpRequest();
-    if (xhr.upload) {
-      // File Drop
-      fileDrag.addEventListener('dragover', fileDragHover, false);
-      fileDrag.addEventListener('dragleave', fileDragHover, false);
-      fileDrag.addEventListener('drop', fileSelectHandler, false);
-    }
-  }
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
 
-  function fileDragHover(e) {
-    var fileDrag = document.getElementById('file-drag');
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag');
 
-    e.stopPropagation();
-    e.preventDefault();
+                e.stopPropagation();
+                e.preventDefault();
 
-    fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
-  }
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
 
-  function fileSelectHandler(e) {
-    // Fetch FileList object
-    var files = e.target.files || e.dataTransfer.files;
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
 
-    // Cancel event and hover styling
-    fileDragHover(e);
+                // Cancel event and hover styling
+                fileDragHover(e);
 
-    // Process all File objects
-    for (var i = 0, f; f = files[i]; i++) {
-      parseFile(f);
-      uploadFile(f);
-    }
-  }
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
 
-  // Output
-  function output(msg) {
-    // Response
-    var m = document.getElementById('messages');
-    m.innerHTML = msg;
-  }
+            // Output
+            function output(msg) {
+                // Response
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
 
-  function parseFile(file) {
+            function parseFile(file) {
 
-    console.log(file.name);
-    output(
-      '<strong>' + encodeURI(file.name) + '</strong>'
-    );
-    
-    // var fileType = file.type;
-    // console.log(fileType);
-    var imageName = file.name;
+                console.log(file.name);
+                output(
+                    '<strong>' + encodeURI(file.name) + '</strong>'
+                );
 
-    var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
-    if (isGood) {
-      document.getElementById('start').classList.add("hidden");
-      document.getElementById('response').classList.remove("hidden");
-      document.getElementById('notimage').classList.add("hidden");
-      // Thumbnail Preview
-      document.getElementById('file-image').classList.remove("hidden");
-      document.getElementById('file-image').src = URL.createObjectURL(file);
-    }
-    else {
-      document.getElementById('file-image').classList.add("hidden");
-      document.getElementById('notimage').classList.remove("hidden");
-      document.getElementById('start').classList.remove("hidden");
-      document.getElementById('response').classList.add("hidden");
-      document.getElementById("file-upload-form").reset();
-    }
-  }
+                // var fileType = file.type;
+                // console.log(fileType);
+                var imageName = file.name;
 
-  function setProgressMaxValue(e) {
-    var pBar = document.getElementById('file-progress');
+                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+                if (isGood) {
+                    document.getElementById('start').classList.add("hidden");
+                    document.getElementById('response').classList.remove("hidden");
+                    document.getElementById('notimage').classList.add("hidden");
+                    // Thumbnail Preview
+                    document.getElementById('file-image').classList.remove("hidden");
+                    document.getElementById('file-image').src = URL.createObjectURL(file);
+                } else {
+                    document.getElementById('file-image').classList.add("hidden");
+                    document.getElementById('notimage').classList.remove("hidden");
+                    document.getElementById('start').classList.remove("hidden");
+                    document.getElementById('response').classList.add("hidden");
+                    document.getElementById("file-upload-form").reset();
+                }
+            }
 
-    if (e.lengthComputable) {
-      pBar.max = e.total;
-    }
-  }
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
 
-  function updateFileProgress(e) {
-    var pBar = document.getElementById('file-progress');
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
 
-    if (e.lengthComputable) {
-      pBar.value = e.loaded;
-    }
-  }
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
 
-  function uploadFile(file) {
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
 
-    var xhr = new XMLHttpRequest(),
-      fileInput = document.getElementById('class-roster-file'),
-      pBar = document.getElementById('file-progress'),
-      fileSizeLimit = 1024; // In MB
-    if (xhr.upload) {
-      // Check if file is less than x MB
-      if (file.size <= fileSizeLimit * 1024 * 1024) {
-        // Progress bar
-        pBar.style.display = 'inline';
-        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
-        xhr.upload.addEventListener('progress', updateFileProgress, false);
+            function uploadFile(file) {
 
-        // File received / failed
-        xhr.onreadystatechange = function(e) {
-          if (xhr.readyState == 4) {
-            // Everything is good!
+                var xhr = new XMLHttpRequest(),
+                    fileInput = document.getElementById('class-roster-file'),
+                    pBar = document.getElementById('file-progress'),
+                    fileSizeLimit = 1024; // In MB
+                if (xhr.upload) {
+                    // Check if file is less than x MB
+                    if (file.size <= fileSizeLimit * 1024 * 1024) {
+                        // Progress bar
+                        pBar.style.display = 'inline';
+                        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
+                        xhr.upload.addEventListener('progress', updateFileProgress, false);
 
-            // progress.className = (xhr.status == 200 ? "success" : "failure");
-            // document.location.reload(true);
-          }
-        };
+                        // File received / failed
+                        xhr.onreadystatechange = function(e) {
+                            if (xhr.readyState == 4) {
+                                // Everything is good!
 
-        // Start upload
-        xhr.open('POST', document.getElementById('file-upload-form').action, true);
-        xhr.setRequestHeader('X-File-Name', file.name);
-        xhr.setRequestHeader('X-File-Size', file.size);
-        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-        xhr.send(file);
-      } else {
-        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
-      }
-    }
-  }
+                                // progress.className = (xhr.status == 200 ? "success" : "failure");
+                                // document.location.reload(true);
+                            }
+                        };
 
-  // Check for the various File API support.
-  if (window.File && window.FileList && window.FileReader) {
-    Init();
-  } else {
-    document.getElementById('file-drag').style.display = 'none';
-  }
-}
-ekUpload();
+                        // Start upload
+                        xhr.open('POST', document.getElementById('file-upload-form').action, true);
+                        xhr.setRequestHeader('X-File-Name', file.name);
+                        xhr.setRequestHeader('X-File-Size', file.size);
+                        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                        xhr.send(file);
+                    } else {
+                        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+                    }
+                }
+            }
+
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload();
+    </script>
+
+    <script type="text/javascript">
+        function initialize() {
+            var options = {
+                //types: ['(cities)'],
+                componentRestrictions: {
+                    country: "ci"
+                }
+            };
+            var input = document.getElementById('autocomplete');
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        function positions() {
+            var geocoder = new google.maps.Geocoder();
+            var address = document.getElementById('autocomplete').value;
+
+            geocoder.geocode({
+                'address': address
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                    document.getElementById('longitude').value = longitude;
+                    document.getElementById('latitude').value = latitude;
+                }
+            });
+        }
     </script>
 </body>
 

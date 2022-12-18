@@ -11,6 +11,8 @@ use App\Residence;
 use App\Reservation;
 use App\Galerie;
 use App\Clic;
+use Illuminate\Support\Facades\Validator;
+
 
 class AgentController extends Controller
 {
@@ -201,6 +203,18 @@ class AgentController extends Controller
             $user = Auth::user();
             $id = $user->id;
 
+            $validator = Validator::make($request->all(), [
+                'designation' => 'required',
+                'montant' => ['required',''],
+                'description' => 'required',
+                'autocomplete' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                //dd($validator);
+                return back()->withErrors($validator)->withInput();
+            }
+
             $file = $request->file('image_five');
             $name_img = $file->getClientOriginalName();
             $storage_data = Storage::disk('public')->put($name_img, file_get_contents($file));
@@ -259,7 +273,7 @@ class AgentController extends Controller
                     }
                 } else {
                     $cotaValide = count($files) - 1 ;
-                    return redirect()->back()->with('danger', "Enregistrement impossible vous disposer d'un cota de ".$cotaValide);
+                    return redirect()->back()->with('danger', "Enregistrement impossible vous disposer d'un cota de 4 images");
                 }
             }
             

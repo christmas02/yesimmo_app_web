@@ -54,7 +54,7 @@
                                         </span></a>
                                 </li>
                             </ul>
-							<form method="POST" action="/save/appartement/agent" enctype="multipart/form-data">
+							<form method="POST" action="/save/appartement/agent" enctype="multipart/form-data" onsubmit="$('#loading').show(),$('#submit').hide();">
                             @csrf
                             <div id="step-1">
                                     <div class="item form-group">
@@ -62,8 +62,11 @@
                                             for="first-name">Nom de la résidence ou titre du poste <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" name="designation"
+                                            <input type="text" name="designation" value="{{ old('designation') }}"
                                                 class="form-control ">
+                                                @error('designation')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                         </div>
                                     </div>
 
@@ -119,7 +122,10 @@
                                         journalie<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" name="montant" class="form-control">
+                                        <input type="text" name="montant" class="form-control" value="{{ old('montant') }}">
+                                        @error('montant')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -128,9 +134,12 @@
                                         class="col-form-label col-md-3 col-sm-3 label-align">Situation
                                         geographique</label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" name="autocomplete" value=""  class="form-control">
-                                        <!--<input type="text" name="autocomplete" id="autocomplete"
-                                            value="" onchange="positions()" class="form-control">-->
+                                        {{--<input type="text" name="autocomplete" value="{{ old('autocomplete') }}"  class="form-control">--}}
+                                        <input type="text" name="autocomplete" id="autocomplete"
+                                        value="{{ old('autocomplete') }}"  onchange="positions()" class="form-control">
+                                        @error('autocomplete')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -158,8 +167,12 @@
                                     <label for="middle-name"
                                         class="col-form-label col-md-3 col-sm-3 label-align">Description</label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <textarea rows="8" name="description" class="form-control" ></textarea>
+                                        <textarea rows="8" name="description" class="form-control" value="">{{ old('description') }}</textarea>
+                                        @error('description')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
+                                    
                                 </div>
 
                                 <!--<div class="item form-group">
@@ -176,14 +189,14 @@
                                     <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Image
                                         principale</label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="file" name="image_five" accept="image/*" class="form-control" require>
+                                        <input type="file" name="image_five" accept="image/*" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="item form-group">
                                     <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Choisier 4 images de plus</label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="file" name="images[]" accept="image/*" class="form-control" multiple>
+                                        <input type="file" name="images[]" accept="image/*" class="form-control" multiple required>
                                     </div>
                                 </div>
 
@@ -222,6 +235,10 @@
                                 <div class="item form-group">
                                     <div class="col-md-6 col-sm-6 offset-md-3">
                                         <button type="submit" class="btn btn-success">Enregistre</button>
+                                    </div>
+                                    <div class="btn btn-success" id="loading" style="display:none">
+                                        <i class="loading-icon fa-lg fas fa-spinner fa-spin hide"></i> 
+                                        <i class="czi-user mr-2 ml-n1"></i>
                                     </div>
                                 </div>
                                 

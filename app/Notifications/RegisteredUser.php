@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\Mail\NotificationMailInscription; 
 
 class RegisteredUser extends Notification
 {
@@ -40,13 +41,8 @@ class RegisteredUser extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->success()
-                    ->subject('Confirmation d\'Inscription sur yesimmo.ci ')
-                    ->line('Votre compte à bien été crée. Cependant il doit être confirmer afin que vous puissez y accéder.
-                     Merci de cliquer sur le lien suivant.')
-                    ->action('Confirmer mon compte', url("/confirm/{$notifiable->id}/{$notifiable->confirmation_token}"))
-                    ->line('Merci d\'utiliser notre plateforme');
+        return (new NotificationMailInscription($notifiable))->to($notifiable->email);
+
     }
 
     /**

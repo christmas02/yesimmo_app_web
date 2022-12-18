@@ -1,17 +1,73 @@
-@extends('template.layout.master_page_one')
+@extends('template.layout.master_second')
 
 @section('content')
-<style>
-.items-box {
-    padding-left: 10px;
-    padding-right: 0px;
-    margin-bottom: 11px;
-    margin-left: px;
-}
-</style>
+
 
 <!-- LISTING LIST -->
+
 <section>
+    <div class="container" style="margin-top:50px">
+        <div class="row">
+            <div class="col-md-3">
+               @include('template.layout.section_pub')
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    @if($residences)
+                    @foreach($residences as $items)
+                    <div class="col-md-4">
+                        <div class="place-item layout-02 place-hover margin_box" data-maps_name="mattone_restaurant">
+                            <div class="place-inner">
+                                        <div class="place-thumb hover-img">
+                                            <a class="entry-thumb" href="/description/appartement/location/{{$items->id}}/{{$items->type}}/accueil">
+                                                <img src="{{asset('/immobilier/public/storage/'.$items->image_one)}}" alt=""></a>
+                                            <a href="/description/appartement/location/{{$items->id}}/{{$items->type}}/accueil" class="golo-add-to-wishlist btn-add-to-wishlist " data-place-id="185">
+                                                <span class="icon-heart">
+                                                    <i class="la la-bookmark large"></i>
+                                                </span>                                    
+                                            </a>       
+                                            <a class="entry-category rosy-pink" href="#">
+                                                <i class="las la-bed"></i><span>Résidences meublées</span>
+                                            </a>
+                                            <a href="#" class="author" title="Author"><img src="template/images/favicon-yesimmo.png" alt="Author"></a>
+                                        </div>       
+                                        <div class="entry-detail">
+                                            <h3 class="place-title"><a href="/description/appartement/location/{{$items->id}}/{{$items->type}}/accueil">{{$items->titre}}</a></h3>
+                                            <div class="open-now"> <i class="las la-map-marker"></i> {{$items->localisations}}</div>
+                                            <div class="entry-bottom">
+                                                <div class="place-price">
+                                                    <span>{{ number_format($items->montant) }} .XOF / Jours</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach  
+                    @endif
+                </div>
+
+                <br>
+
+                <div class="pagination">
+					<div class="pagination__numbers">
+						<span>1</span>
+						<a title="2" href="#">2</a>
+						<a title="3" href="#">3</a>
+						<a title="Next" href="#">
+							<i class="la la-angle-right"></i>
+						</a>
+					</div>
+				</div>
+            
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+{{--<section>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -125,7 +181,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>--}}
 <!-- END LISTING LIST -->
 
 <!-- CALL TO ACTION -->

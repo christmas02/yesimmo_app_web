@@ -22,7 +22,7 @@
                 <td align="left" valign="top"
                     style="direction:ltr;padding:0 24px 0 24px">
                     <p style="margin:0;padding:0;color:#131313;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:0.1px">
-                        <a href="">www.sportevent.ci</a>
+                        
                     </p>
                 </td>
             </tr>

@@ -8,7 +8,6 @@
             <div class="title_left">
                 <h3>Immo <small>/ Liste des rendez-vous</small></h3>
             </div>
-
         </div>
 
         <div class="clearfix"></div>
@@ -63,7 +62,7 @@
                                                     @if($items->statu == 1)
                                                     <span class="text-success"> Consulter et Valider </span>
                                                     @elseif($items->statu == 2)
-                                                    <span class="text-warning"> Consulter et Valider </span>
+                                                    <span class="text-warning"> Consulter et Annuler </span>
                                                     @elseif($items->statu == 0)
                                                     <span class="text-danger"> En attente </span>
                                                     @elseif($items->statu == 3)
@@ -73,10 +72,7 @@
 
                                                 <td>
                                                     <div class="">
-                                                        <a href="#" data-toggle="modal"
-                                                            data-target="#exampleModalRdv{{ $items->idReservation }}"
-                                                            class="btn btn-primary btn-rounded"><i
-                                                                class="fa fa-folder"></i></a>
+                                                        <a href="#" data-toggle="modal" data-target="#exampleModalRdv{{ $items->idReservation }}" class="btn btn-primary btn-rounded"><i class="fa fa-folder"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -90,16 +86,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
-
-
-
-
-
         </div>
     </div>
 </div>
@@ -109,8 +97,7 @@
 
 <!-- Modal -->
 @foreach($listReservation as $items)
-<div class="modal fade" id="exampleModalRdv{{ $items->idReservation }}" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalRdv{{ $items->idReservation }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -130,8 +117,7 @@
                             ({{ $items->nbreJour }}/jours)</span><br>
                         <span><b>Montant</b>: {{ number_format($items->coutSejour) }} .XOF</span>
                         <hr>
-                        <span><b>Appartement</b>: <a
-                                href="/detail/residence/{{ $items->id }}">{{ $items->titre }}</a></span> <br>
+                        <span><b>Appartement</b>: <a href="/detail/residence/{{ $items->id }}">{{ $items->titre }}</a></span> <br>
                     </div>
                 </div>
                 <hr>
@@ -167,10 +153,8 @@
                                     <span style="margin-left: 10px;">
                                         <input type="text" hidden name="id" value="{{$items->idReservation}}" />
                                         @if($items->statu == 0)
-                                        <b>Oui</b> <input class="flat" type="radio" id="Oui" name="consulation"
-                                            value="1">
-                                        <b>Non</b> <input class="flat" type="radio" id="non" name="consulation"
-                                            value="0">
+                                        <b>Oui</b> <input class="flat" type="radio" id="Oui" name="consulation" value="1">
+                                        <b>Non</b> <input class="flat" type="radio" id="non" name="consulation" value="2">
                                         @endif
                                     </span>
                                 </div>
@@ -178,16 +162,13 @@
                                 <div class="form-group">
                                     <label>Si non veillir renseigner le motif</label>
                                     <div class="">
-                                        <input class="flat" hidden type="radio" id="Oui" name="consulation" value="2">
-                                        <textarea class="form-control" name="motif" rows="5" cols="100"
-                                            style="width: 100%;, margin: 10px"></textarea>
+                                        <textarea class="form-control" name="motif" rows="5" cols="100" style="width: 100%;, margin: 10px"></textarea>
                                     </div>
                                 </div>
 
 
                                 <div class="modal-footer-btn">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Annuler</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                     <button type="submit" class="btn btn-danger">Valider</button>
                                 </div>
 
@@ -203,15 +184,14 @@
                                     <label>Veillir renseigner le motif</label>
                                     <div class="">
                                         <input type="text" hidden name="id" value="{{$items->idReservation}}" />
-                                        <textarea class="form-control" name="motif" rows="5" cols="100"
-                                            style="width: 100%; margin: 10px"></textarea>
+                                        <input hidden type="text" name="consulation" value="3">
+                                        <textarea class="form-control" name="motif" rows="5" cols="100" style="width: 100%; margin: 10px"></textarea>
                                     </div>
                                 </div>
 
 
                                 <div class="modal-footer-btn">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Annuler</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                     <button type="submit" class="btn btn-danger">Valider</button>
                                 </div>
 
@@ -227,8 +207,7 @@
                         <span><b>Telephone client</b>: {{ $items->phoneClient }}</span><br>
                         <span><b>Date prevus pour la visite</b>: {{ $items->datedebut }}</span><br>
                         <hr>
-                        <span><b>Appartement</b>: <a
-                                href="/detail/residence/{{ $items->id }}">{{ $items->titre }}</a></span> <br>
+                        <span><b>Appartement</b>: <a href="/detail/residence/{{ $items->id }}">{{ $items->titre }}</a></span> <br>
                     </div>
                 </div>
                 <hr>
@@ -264,10 +243,8 @@
                                     <span style="margin-left: 10px;">
                                         <input type="text" hidden name="id" value="{{$items->idReservation}}" />
                                         @if($items->statu == 0)
-                                        <b>Oui</b> <input class="flat" type="radio" id="Oui" name="consulation"
-                                            value="1">
-                                        <b>Non</b> <input class="flat" type="radio" id="non" name="consulation"
-                                            value="0">
+                                        <b>Oui</b> <input class="flat" type="radio" id="Oui" name="consulation" value="1">
+                                        <b>Non</b> <input class="flat" type="radio" id="non" name="consulation" value="2">
                                         @endif
                                     </span>
                                 </div>
@@ -275,15 +252,13 @@
                                 <div class="form-group">
                                     <label>Si non veillir renseigner le motif</label>
                                     <div class="">
-                                        <textarea class="form-control" name="motif" rows="5" cols="100"
-                                            style="width: 100%;, margin: 10px"></textarea>
+                                        <textarea class="form-control" name="motif" rows="5" cols="100" style="width: 100%;, margin: 10px"></textarea>
                                     </div>
                                 </div>
 
 
                                 <div class="modal-footer-btn">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Annuler</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                     <button type="submit" class="btn btn-danger">Valider</button>
                                 </div>
 
@@ -299,16 +274,14 @@
                                     <label>Veillir renseigner le motif</label>
                                     <div class="">
                                         <input type="text" hidden name="id" value="{{$items->idReservation}}" />
-                                        <input hidden type="text" name="consulation" value="2">
-                                        <textarea class="form-control" name="motif" rows="5" cols="100"
-                                            style="width: 100%; margin: 10px"></textarea>
+                                        <input hidden type="text" name="consulation" value="3">
+                                        <textarea class="form-control" name="motif" rows="5" cols="100" style="width: 100%; margin: 10px"></textarea>
                                     </div>
                                 </div>
 
 
                                 <div class="modal-footer-btn">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Annuler</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                     <button type="submit" class="btn btn-danger">Valider</button>
                                 </div>
 

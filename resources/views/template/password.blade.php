@@ -1,64 +1,111 @@
-@extends('template.layout.master_page')
+@extends('template.layout.master_second')
 
 @section('content')
+<main id="main" class="site-main contact-main">
+<div class="page-title page-title--small align-left" style="background-image: url(images/bg/bg-about.png);">
+				<div class="container">
+					<div class="page-title__content">
+						<h1 class="page-title__name">Mot de passe oublier</h1>
+						<p class="page-title__slogan"></p>
+					</div>
+				</div>	
+			</div><!-- .page-title -->
 
-    <div class="clearfix"></div>
-
-    <!-- LISTING LIST -->
-    <section>
+    <div class="site-content ">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <!-- Form Login -->
-                    <div class="card mx-auto" style="max-width: 500px;">
-                        <div class="card-body">
-                        @if(Session::has('success'))
-                            <div class="alert alert-success">{{ Session::get('success') }}</div>
+                <div class="">
+                    <div>
+                    {{--  @if(Session::has('success'))
+                        <div class="site-content">
+                            <div class="error-wrap">
+                                <div class="container">
+                                    <div class="alert alert-success" style="color: #000">
+                                        <h2>FÉLICITATION!</h2>
+                                        <b>Bravo,</b>
+                                        <p>{{ Session::get('success') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .site-content -->
                         @elseif(Session::has('danger'))
-                            <div class="alert alert-danger">{{ Session::get('danger') }}</div>
+                        <div class="site-content">
+                            <div class="error-wrap">
+                                <div class="container">
+                                    <div class="alert alert-danger padding-box" style="color: #000">
+                                        <h2>OOPS!</h2>
+                                        <b>Désole, une erreur c'est produite.</b>
+                                        <p>{{ Session::get('danger') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .site-content -->
                         @elseif(Session::has('warning'))
-                            <div class="alert alert-warning">{{ Session::get('warning') }}</div>
-                        @endif
-                            <h4 class="card-title text-center mb-4">Modification de mot de passe</h4>
+                        <div class="site-content">
+                            <div class="error-wrap">
+                                <div class="container">
+                                    <div class="alert alert-warning" style="color: #000">
+                                        <h2>OOPS!</h2>
+                                        <b>Désole, une erreur c'est produite.</b>
+                                        <p>{{ Session::get('warning') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .site-content -->
+                        @endif--}}
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="contact-form" style="max-width: 500px !important; margin: 0 auto;">
+                        <h2 class="mb-5">Enseigner votre adresse email</h2>
+
+                        <form method="POST" action="/modification/motPasse" class="form-underline"
+                            onsubmit="$('#loading').show(),$('#submit').hide();">
+                            @csrf
+                            <div class="field-input">
+                                <input type="email" name="email" class="form-control" placeholder="Adresse élèctronique"
+                                    value="{{ old('email') }}" required>
+                                @error('email')
+                                <span class="alert-danger">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="field-input">
+                                <small class="form-text text-muted">Vos informations resteront confidentielles.</small>
+
+                            </div>
+
+
+
                             <br>
-                            <form method="POST" action="/modification/motPasse">
-                                @csrf
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Adresse élèctronique" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                </div> <!-- form-group// -->
-                                <hr>
-                                
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block"> Modification </button>
-                                </div> <!-- form-group// -->
 
-                            </form>
-                        </div> <!-- card-body.// -->
-                    </div> <!-- card .// -->
+                            <div class="field-submit">
+                                <input id="submit" type="submit" value="Envoyer" class="btn">
+                                <div class="btn" id="loading" style="display:none">
+                                    <i class="loading-icon fa-lg fas fa-spinner fa-spin hide"></i>
+                                    <i class="czi-user mr-2 ml-n1"></i>
+                                </div>
+                            </div>
 
-                    {{--<p class="text-center mt-4">Vous n'avez pas de compte? <a href="/inscription">S'inscrire</a></p>--}}
-                    
+                        </form>
+                    </div>
                 </div>
+
+
             </div>
         </div>
-    </section>
-    <!-- END LISTING LIST -->
+    </div><!-- .site-content -->
 
 
 
-    <!-- CALL TO ACTION -->
-    <section class="cta-v1 py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-9">
-                   
-                </div>
-                <div class="col-lg-3">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END CALL TO ACTION -->
- 
+</main><!-- .site-main -->
+
+<!-- LISTING LIST -->
+
+<!-- END LISTING LIST -->
+
+
+
 @endsection

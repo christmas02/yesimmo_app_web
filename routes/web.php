@@ -42,16 +42,19 @@ Route::get('/residences', 'TemplateController@Residence');
 
 Route::get('/bons/coins', 'TemplateController@Boncoins');
 
-Route::post('/recherche/appartement', 'TemplateController@serchAppart');
+Route::post('/recherche/appartement','TemplateController@serchAppart');
 
-Route::post('/modification/motPasse', 'TemplateController@forgetPassword');
+Route::post('modification/motPasse','Auth\ForgotPasswordController@forgetPassword');
+Route::get('/nouveau_mot_de_passe/{id}/{token}', 'Auth\ForgotPasswordController@newPassword');
+Route::post('/savePassword', 'Auth\ForgotPasswordController@saveNewpassword');
+
 
 //Controller Panier 
 Route::resource('cart', 'CartController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'TemplateController@index')->name('home');
 
 
 
@@ -86,11 +89,10 @@ Route::group(['middleware' => 'admin'], function()
 
 
 ////////////==========================================================///////////////////
-
-
-   
+  
     
 });
+
 Route::get('/desact/appartement/{id}','AppartementController@desactiverAppartement');
 Route::get('/activ/appartement/{id}','AppartementController@activerAppartement');
 
@@ -119,7 +121,7 @@ Route::get('/agent/reservation','AgentController@getReservation');
 Route::get('/confirm/{id}/{token}','Auth\RegisterController@confirm')->name('confirm');
 
 Route::post('/save/profil','UserController@saveProfil');
-Route::post('/save/password','UserController@savePassword');
+//Route::post('/save/password','UserController@savePassword');
 
 
 

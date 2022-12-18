@@ -29,7 +29,7 @@
                         @endif
 
                         <!-- Smart Wizard -->
-                        <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
+                        <p>.</p>
                         <div id="wizard" class="form_wizard wizard_horizontal">
                             <ul class="wizard_steps">
                                 <li><a href="#step-1"><span class="step_no">1</span>
@@ -70,7 +70,7 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align"
                                             for="first-name">Nombre
-                                            de pierce <span class="required">*</span>
+                                            de pièce <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <select required="required" name="nbre_pierce" class="form-control ">
