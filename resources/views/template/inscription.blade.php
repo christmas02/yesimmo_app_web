@@ -97,7 +97,7 @@
                                 @enderror
                             </div>
                             <div class="field-input">
-                                <input type="text" name="phone" class="form-control" placeholder="Numéro de téléphone"
+                                <input type="number" name="phone" class="form-control" placeholder="Numéro de téléphone"
                                     value="{{ old('phone') }}" required>
                                 @error('phone')
                                 <span class="alert-danger">
@@ -107,7 +107,6 @@
                             </div>
                             <div class="field-input">
                                 <input type="password" name="password" placeholder="Créer un mot de passe">
-
                                 @error('password')
                                 <span class="alert-danger">
                                     <strong>{{ $message }}</strong>

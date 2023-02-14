@@ -125,6 +125,18 @@
 
                                 <div class="item form-group">
                                     <label for="middle-name"
+                                        class="col-form-label col-md-3 col-sm-3 label-align">Ville ou commune</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <select required="required" name="commune" class="form-control ">
+                                        @foreach($commune as $item)
+                                            <option value="{{ $item->id }}"> {{ $item->libelle }}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label for="middle-name"
                                         class="col-form-label col-md-3 col-sm-3 label-align">Situation
                                         geographique</label>
                                     <div class="col-md-6 col-sm-6 ">

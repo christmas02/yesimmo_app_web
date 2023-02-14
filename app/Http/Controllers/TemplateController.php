@@ -26,17 +26,26 @@ class TemplateController extends Controller
     }
 
     Public function index(){
-        $alltype = $this->alltype();
-        $residences = Appartement::where('statu','!=',0)->where('type',1)->OrderBy('id','desc')->get();
-        $appartements = Appartement::where('statu','!=',0)->where('type',2)->OrderBy('id','desc')->get();
-        
-        //dd($residences);
-        if(session('success_message')){
-            Alert::success('', session('success_message'));
-        }
+        try {
+            //code...
+            $alltype = $this->alltype();
+            $residences = Appartement::where('statu','!=',0)
+            ->leftjoin('users','users.id','=','appartements.user_id')
+            ->where('appartements.type',1)->OrderBy('appartements.id','desc')->select('appartements.*','users.img')->get();
+            $appartements = Appartement::where('statu','!=',0)->where('type',2)->OrderBy('id','desc')->get();
+            
+            //dd($residences);
+            if(session('success_message')){
+                Alert::success('', session('success_message'));
+            }
 
-        //dd($residences);
-       return view('template.index', compact('residences','appartements','alltype'));
+            //dd($residences);
+            return view('template.index', compact('residences','appartements','alltype'));
+        } catch (\Throwable $th) {
+            //throw $th;
+            dd($th);
+        }
+        
     }
 
     public function reserveAppartement(Request $request){
@@ -137,6 +146,16 @@ class TemplateController extends Controller
 
     }
 
+    public function agentGallerie($id){
+        $agent = User::where('id',$id)->first();
+        $residences = Appartement::where('statu','!=',0)
+        ->leftjoin('users','users.id','=','appartements.user_id')
+        ->OrderBy('appartements.id','desc')->select('appartements.*','users.img')->get();
+
+        return view('template.agentGallerie', compact('agent','residences'));
+
+    }
+
     Public function showAppartementlocation($id, $type, $lien){
 
         $ip = request()->ip();
@@ -154,7 +173,7 @@ class TemplateController extends Controller
         //dd($ref->ref);
 
         $alltype = $this->alltype();
-        $allresidence = Appartement::where('statu',1)->get()->random(4);
+        $allresidence = Appartement::where('statu',1)->get()->random(1);
         //dd($allresidence);
         $residences = Appartement::where('id',$id)->first();
         $galerie = Galerie::where('id_appartement',$ref->ref)->get();
@@ -212,8 +231,12 @@ class TemplateController extends Controller
             return view('template.appartements', compact('appartements','alltype'));
          }
 
-         
+    
 
+    }
+
+    public function viewMail(){
+        return view('mails.inscription');
     }
 
 }

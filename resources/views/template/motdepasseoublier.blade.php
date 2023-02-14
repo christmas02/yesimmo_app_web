@@ -93,7 +93,7 @@ function getUser($id){
                                 <input type="text"  placeholder="{{ getUser($id)->email }}" disabled>
                             </div>
                             <div class="field-input">
-                            <input type="hidden" value="{{ $id }}" name="id_user">
+                                <input type="hidden" value="{{ $id }}" name="id_user">
                                 <input type="password" name="password" required autocomplete="current-password"
                                     placeholder="Mot de passe">
                             </div>

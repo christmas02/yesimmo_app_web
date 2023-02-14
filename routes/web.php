@@ -24,6 +24,8 @@ Route::get('/description/appartement/{id}/{type}/{lien}','TemplateController@sho
 
 Route::get('/description/appartement/location/{id}/{type}/{lien}','TemplateController@showAppartementlocation');
 
+Route::get('/ma_callerie/{id}','TemplateController@agentGallerie');
+
 Route::get('/inscription','TemplateController@inscription');
 
 Route::get('/mot_de_passe_oublier','TemplateController@password');
@@ -47,6 +49,9 @@ Route::post('/recherche/appartement','TemplateController@serchAppart');
 Route::post('modification/motPasse','Auth\ForgotPasswordController@forgetPassword');
 Route::get('/nouveau_mot_de_passe/{id}/{token}', 'Auth\ForgotPasswordController@newPassword');
 Route::post('/savePassword', 'Auth\ForgotPasswordController@saveNewpassword');
+
+
+Route::get('/modelMial', 'TemplateController@viewMail');
 
 
 //Controller Panier 
@@ -114,9 +119,11 @@ Route::post('/rapport/reservation','AgentController@rapportReservation');
 
 Route::get('/agent/details/appartement/{id}','AgentController@showAppartement');
 Route::get('/agent/add/appartement','AgentController@addAppartement');
-Route::post('/agent/save/appartement','AgentController@saveAppartement');
+Route::post('agent/save/appartement','AgentController@saveAppartement');
 Route::post('/update/poste/residence','AppartementController@updadePoste');
 Route::get('/agent/reservation','AgentController@getReservation');
+
+Route::post('appartement','AgentController@Appartement');
 
 Route::get('/confirm/{id}/{token}','Auth\RegisterController@confirm')->name('confirm');
 

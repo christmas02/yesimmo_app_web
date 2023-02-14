@@ -258,6 +258,12 @@
                                     <input type="" name="" class="form-control" value="{{ Auth::user()->email }}">
                                 </div>
                             </div>
+                            <div class="item form-group">
+                                <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Apropos de moi</label>
+                                <div class="col-md-9 col-sm-9 ">
+                                    <textarea rows="8" name="description" class="form-control" value="">{{ old('description') }}</textarea>
+                                </div>
+                            </div>
 
                         </div>
 

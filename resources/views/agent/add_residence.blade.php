@@ -121,11 +121,23 @@
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Montant
                                         journalie<span class="required">*</span>
                                     </label>
+                                    
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" name="montant" class="form-control" value="{{ old('montant') }}">
+                                        <input type="number" name="montant" class="form-control" value="{{ old('montant') }}">
                                         @error('montant')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label for="middle-name"
+                                        class="col-form-label col-md-3 col-sm-3 label-align">Ville ou commune</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <select required="required" name="commune" class="form-control ">
+                                        @foreach($commune as $item)
+                                            <option value="{{ $item->id }}"> {{ $item->libelle }}</option>
+                                        @endforeach
+                                        </select>
                                     </div>
                                 </div>
 

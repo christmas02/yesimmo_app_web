@@ -71,7 +71,7 @@
 						                <a class="entry-category rosy-pink" href="#">
 						                    <i class="las la-bed"></i><span>Résidences meublées</span>
 						                </a>
-						                <a href="#" class="author" title="Author"><img src="template/images/favicon-yesimmo.png" alt="Author"></a>
+						                <a href="/ma_callerie/{{ $items->user_id }}" class="author" title="{{ $items->name }}"><img src="{{asset('/immobilier/public/storage/'.$items->img)}}" alt="Author"></a>
 									</div>       
 							        <div class="entry-detail">
 							            <h3 class="place-title"><a href="/description/appartement/location/{{$items->id}}/{{$items->type}}/accueil">{{$items->titre}}</a></h3>

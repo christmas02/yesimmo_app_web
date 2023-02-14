@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Appartement extends Model
+class Commune extends Model
 {
     //
-    protected $guarded = [];
 }

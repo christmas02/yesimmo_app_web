@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Appartement;
 use App\Residence;
+use App\Commune;
 use App\Reservation;
 use App\Galerie;
 use App\Clic;
+use App\Ville;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -33,43 +35,66 @@ class AgentController extends Controller
     }
 
     public function index(){
-        $user = Auth::user();
-        $id_user = $user->id;
+        try {
+            //code...
+            $user = Auth::user();
+            $id_user = $user->id;
 
-        $visiteRes = Clic::where('clics.type',1)
-        ->leftjoin('appartements','appartements.id','=','clics.id_appartement')
-        ->where('appartements.user_id',$id_user)
-        ->count();
+            $visiteRes = Clic::where('clics.type',1)
+            ->leftjoin('appartements','appartements.id','=','clics.id_appartement')
+            ->where('appartements.user_id',$id_user)
+            ->count();
 
-        $visiteApp = Clic::where('clics.type',2)
-        ->leftjoin('appartements','appartements.id','=','clics.id_appartement')
-        ->where('appartements.user_id',$id_user)
-        ->count();
+            $visiteApp = Clic::where('clics.type',2)
+            ->leftjoin('appartements','appartements.id','=','clics.id_appartement')
+            ->where('appartements.user_id',$id_user)
+            ->count();
 
-        $listReservation = Reservation::
-        leftjoin('appartements','appartements.id','=','reservations.id_appartement')
-        ->where('appartements.user_id',$id_user)
-        ->count();
+            $listReservation = Reservation::
+            leftjoin('appartements','appartements.id','=','reservations.id_appartement')
+            ->where('appartements.user_id',$id_user)
+            ->count();
 
-        //dd($visiteRes);
+            //dd($visiteRes);
 
-        return view('agent.home',compact('visiteRes', 'visiteApp', 'listReservation'));
+            return view('agent.home',compact('visiteRes', 'visiteApp', 'listReservation'));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('template.connexion');
+        }
+        
     }
 
     public function listAppartement(){
-        $user = Auth::user();
-        $id = $user->id;
-        $appartements = $this->getlistAppartement($id);
-        return view('agent.list_appartement',compact('appartements'));
+        try {
+            //code...
+            $user = Auth::user();
+            $id = $user->id;
+            $appartements = $this->getlistAppartement($id);
+            return view('agent.list_appartement',compact('appartements'));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('template.connexion');
+        }
+       
     }
 
     public function showAppartement($id){
-        $appartement = Appartement::find($id);
-        $ref = $appartement->ref;
-        $galerie = Galerie::where('id_appartement',$ref)->get();
-        $imgPossible = 4 - count($galerie);
-        //dd($imgPossible);
-        return view('agent.detail_appartement',compact('appartement','galerie', 'imgPossible'));
+        try {
+            //code...
+            $appartement = Appartement::find($id);
+            $ref = $appartement->ref;
+            $galerie = Galerie::where('id_appartement',$ref)->get();
+            $imgPossible = 4 - count($galerie);
+            //dd($imgPossible);
+            return view('agent.detail_appartement',compact('appartement','galerie', 'imgPossible'));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('template.connexion');
+        }
     }
 
     public function deletImage(Request $request){
@@ -89,7 +114,6 @@ class AgentController extends Controller
     }
 
     public function addGaleri(Request $request){
-        //dd($request->file('images'));
         $matricule = $request->get('matricule');
         $imgPossible = $request->get('imgPossible');
         $images = array();
@@ -99,19 +123,9 @@ class AgentController extends Controller
                     foreach ($files as $file) {
                         //
                         $name = time() . '.' . $file->getClientOriginalName();
-                        //$name = time() . '.' . $file->getClientOriginalExtension();
-                        //$file->move('image',$name);
                         $storage_data = Storage::disk('public')->put($name, file_get_contents($file));
                         $images[]=$name;
-                        //
-                        //$extension = $file->getClientOriginalExtension();
-                        //$image_two = time(). '.' . $image->getClientOriginalname();
-                        //$filename = time() . '.' . $file->getClientOriginalExtension();
-                        //$storage_data = Storage::disk('public')->put($filename, file_get_contents($file));
-                        //$file_path = Storage::url($filename);
-                        //$new_path = asset($file_path);
-                        //$images[]=$filename;
-                      
+        
                         Galerie::create([
                             'image' => $name,
                             'id_appartement' => $matricule
@@ -165,8 +179,6 @@ class AgentController extends Controller
 
     public function updateImgProfile(Request $request){
 
-        //dd($request);
-
         $user = Auth::user();
         $id = $user->id;
 
@@ -175,31 +187,60 @@ class AgentController extends Controller
         $storage_data = Storage::disk('public')->put($name_img, file_get_contents($file));
 
         User::where('id',$id)->update(['img' => $name_img,]);
-        
 
     }
 
     public function addResidence(){
-        return view('agent.add_residence');
+        try {
+            //code...
+            $commune = Commune::all();
+            return view('agent.add_residence',compact('commune'));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('template.connexion');
+        }
     }
 
     public function listResidence(){
-        $user = Auth::user();
-        $id = $user->id;
-        $residences = $this->getlistResidence($id);
-        return view('agent.list_residences',compact('residences'));
+        try {
+            //code...
+            $user = Auth::user();
+            $id = $user->id;
+            $residences = $this->getlistResidence($id);
+            return view('agent.list_residences',compact('residences'));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('template.connexion');
+        }
+        
     }
 
     public function addAppartement(){
-        return view('agent.add_appartement');
+        try {
+            //code...
+            $commune = Commune::all();
+            return view('agent.add_appartement',compact('commune'));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('template.connexion');
+        }
+    }
+
+    public function Appartement(Request $request){
+
+        Ville::create([
+            'titre' => $request->titre,
+            'nom_residence' => $request->nom,
+        ]);
+
     }
 
 
     public function saveAppartement(Request $request){
-        //dd($request->all());
         try {
-            //$this->validate($request,$this->rules,$this->message);
-
             $user = Auth::user();
             $id = $user->id;
 
@@ -238,7 +279,7 @@ class AgentController extends Controller
             $residence->latitude = $request->get('latitude');
             $residence->longitude = $request->get('longitude');
             $residence->description = $request->get('description');
-            //$residence->video = $video;
+            $residence->commune = $request->get('commune');
             $residence->type = $request->get('type');
             $residence->ref = $matricule;
             $residence->image_one = $name_img;
@@ -253,19 +294,8 @@ class AgentController extends Controller
                     foreach ($files as $file) {
                         //
                         $name =  time() . '.' .$file->getClientOriginalName();
-                        //$name = time() . '.' . $file->getClientOriginalExtension();
-                        //$file->move('image',$name);
                         $storage_data = Storage::disk('public')->put($name, file_get_contents($file));
                         $images[]=$name;
-                        //
-                        //$extension = $file->getClientOriginalExtension();
-                        //$image_two = time(). '.' . $image->getClientOriginalname();
-                        //$filename = time() . '.' . $file->getClientOriginalExtension();
-                        //$storage_data = Storage::disk('public')->put($filename, file_get_contents($file));
-                        //$file_path = Storage::url($filename);
-                        //$new_path = asset($file_path);
-                        //$images[]=$filename;
-                      
                         Galerie::create([
                             'image' => $name,
                             'id_appartement' => $matricule
@@ -295,19 +325,22 @@ class AgentController extends Controller
 
 
     public function showResidence($id){
-        $appartement = Appartement::find($id);
-        $ref = $appartement->ref;
-        $galerie = Galerie::where('id_appartement',$ref)->get();
-        $imgPossible = 4 - count($galerie);
-        return view('agent.detail_appartement',compact('appartement','galerie', 'imgPossible'));
+        try {
+            //code...
+            $appartement = Appartement::find($id);
+            $ref = $appartement->ref;
+            $galerie = Galerie::where('id_appartement',$ref)->get();
+            $imgPossible = 4 - count($galerie);
+            return view('agent.detail_appartement',compact('appartement','galerie', 'imgPossible'));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('template.connexion');
+        }
     }
 
     public function updadePoste(Request $request){
-
-        //dd($request->all());
         try {
-            //$this->validate($request,$this->rules,$this->message);
-
             $designation = $request->get('designation');
             $nbre_pierce = $request->get('nbre_pierce');
             $nbre_lit = $request->get('nbre_lit');
@@ -325,10 +358,8 @@ class AgentController extends Controller
                 'nbre_lit' => $nbre_lit,
                 'nbre_salle_eau' => $nbre_salle_eau,
                 'montant' => $montant,
-                
                 'description' => $description,
             ]);
-
 
             return redirect()->back()->with('success', 'Opération éffectué avec succès.');
 
@@ -341,43 +372,45 @@ class AgentController extends Controller
 
 
     public function getReservation(){
-        $user = Auth::user();
-        $id = $user->id;
-        $listReservation = Reservation::
-        leftjoin('appartements','appartements.id','=','reservations.id_appartement')
-        ->where('appartements.user_id',$id)
-        ->select('appartements.ref as reference',
-                 'appartements.titre as titre',
-                 'appartements.id as id',
-                 'reservations.name as nomClient',
-                 'reservations.phone as phoneClient',
-                 'reservations.statu', 
-                 'reservations.created_at',
-                 'reservations.id as idReservation', 
-                 'reservations.type', 
-                 'reservations.datedebut', 
-                 'reservations.datefin', 
-                 'reservations.coutSejour', 
-                 'reservations.nbreJour', 
-                 'reservations.created_at as date')
-        ->orderBy('created_at', 'DESC')
-        ->get();
+        try {
+            //code...
+            $user = Auth::user();
+            $id = $user->id;
+            $listReservation = Reservation::
+            leftjoin('appartements','appartements.id','=','reservations.id_appartement')
+            ->where('appartements.user_id',$id)
+            ->select('appartements.ref as reference',
+                    'appartements.titre as titre',
+                    'appartements.id as id',
+                    'reservations.name as nomClient',
+                    'reservations.phone as phoneClient',
+                    'reservations.statu', 
+                    'reservations.created_at',
+                    'reservations.id as idReservation', 
+                    'reservations.type', 
+                    'reservations.datedebut', 
+                    'reservations.datefin', 
+                    'reservations.coutSejour', 
+                    'reservations.nbreJour', 
+                    'reservations.created_at as date')
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
-        
-        return view('agent.list_reservation',compact('listReservation'));
+            return view('agent.list_reservation',compact('listReservation'));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('template.connexion');
+        }
     }
 
     public function rapportReservation(Request $request){
-
         try {
-
             //dd($request);
-
             $id = $request->get('id');
             $statu = $request->get('consulation');
             $motif = $request->get('motif');
 
-           
             Reservation::where('id',$id)
                 ->update([
                     'statu' => $statu,
@@ -387,9 +420,7 @@ class AgentController extends Controller
             return redirect()->back()->with('success', 'Opération éffectué avec succès.');
 
         } catch (\Throwable $th) {
-             //dd($th);
              return redirect()->back()->with('danger', 'Error.'.$th);
         }
-
     }
 }
